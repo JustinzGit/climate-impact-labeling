@@ -13,6 +13,12 @@ class FoodsController < ApplicationController
     render json: @food
   end
 
+  # GET /foods/barcode/1
+  def barcode_show
+    @food = Food.find_by(gtin_upc: params[:id])
+    render json: @food
+  end 
+
   # POST /foods
   def create
     @food = Food.new(food_params)
