@@ -5,7 +5,7 @@ require 'active_support/inflector'
 Dir.each_child("./usda_files") do |file|
 
     # Read and parse data from file
-    data = CSV.parse(File.read(file))
+    data = CSV.parse(File.read("./usda_files/#{file}"))
 
     # Store columns into an array 
     columns = data.shift
