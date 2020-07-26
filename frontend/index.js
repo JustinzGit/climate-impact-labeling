@@ -34,6 +34,7 @@ function fetchProduct(){
         return resp.json()
     })
     .then(food => {
+        if(food === null) throw "Product Not Found"
         let foodProduct = new Food(food.brand_owner, food.gtin_upc, food.ingredients)
         foodProduct.renderProduct()
 
