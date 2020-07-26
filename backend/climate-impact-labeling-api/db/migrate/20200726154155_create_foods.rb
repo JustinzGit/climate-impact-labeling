@@ -6,6 +6,7 @@ class CreateFoods < ActiveRecord::Migration[6.0]
       t.integer :gtin_upc
       t.string :ingredients
       t.integer :serving_size
+      t.integer :serving_size_unit
       t.string :household_serving_fulltext
       t.string :food_category
 
