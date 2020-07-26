@@ -19,14 +19,9 @@ function createBarcodeForm(){
     barcodeForm.addEventListener("submit", fetchProduct)
 }
 
-function barcodeSubmission(){
+function fetchProduct(){
     event.preventDefault()
     let barcode = document.getElementById("barcode").value
-    return barcode
-}
-
-function fetchProduct(){
-    let barcode = parseInt(barcodeSubmission())
     
     fetch(`${BASE_URL}/foods/barcode/${barcode}`)
     .then(resp => {
