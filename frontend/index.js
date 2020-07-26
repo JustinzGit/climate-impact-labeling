@@ -13,4 +13,12 @@ function createBarcodeForm(){
         <input type="submit">
     </form>
     `
+
+    barcodeForm.addEventListener("submit", barcodeSubmission)
+}
+
+function barcodeSubmission(){
+    event.preventDefault()
+    let barcode = document.getElementById("barcode").value
+    return barcode
 }
