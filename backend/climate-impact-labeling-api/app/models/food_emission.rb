@@ -1,0 +1,2 @@
+class FoodEmission < ApplicationRecord
+end
