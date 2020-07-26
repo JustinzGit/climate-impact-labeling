@@ -1,7 +1,26 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'csv'
+require 'active_support/inflector'
+
+# Seeds rails database from provided files
+Dir.each_child("./usda_files") do |file|
+
+    # Read and parse data from file
+    data = CSV.parse(File.read(file))
+
+    # Store columns into an array 
+    columns = data.shift
+
+    # Convert column names to symbols
+    columns.map! &:to_sym
+
+    # Derive model name from file
+    file = file.split(/.csv|_/)
+    file.map! &:capitalize
+    model_name = file.join().singularize
+
+    # Obtain constant value
+    model = Object.const_get(model_name)
+
+    # Import data into rails model 
+    model.import columns, data
+end 
