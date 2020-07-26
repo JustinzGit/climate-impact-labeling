@@ -28,7 +28,7 @@ function barcodeSubmission(){
 function fetchProduct(){
     let barcode = parseInt(barcodeSubmission())
     
-    fetch(`${BASE_URL}/foods/${barcode}`)
+    fetch(`${BASE_URL}/foods/barcode/${barcode}`)
     .then(resp => {
         if(!resp.ok) throw "Product Not Found"
         return resp.json()
