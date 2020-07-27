@@ -3,10 +3,8 @@ import Chart from "chart.js"
 Chartkick.use(Chart)
 
 document.addEventListener("DOMContentLoaded", () => {
-    
-    
     createBarcodeForm()
-    renderChart()
+    renderEmissionData()
 })
 
 const BASE_URL = "http://127.0.0.1:3000"
@@ -53,6 +51,15 @@ function fetchProduct(){
     })
 }
 
-function renderChart() {
-    new Chartkick.PieChart("chart-1", [["Blueberry", 44], ["Strawberry", 23]])
+function renderEmissionData() {
+    fetch(`${BASE_URL}/emissions`)
+    .then(resp => resp.json())
+    .then(emissions => {
+        let landUsageData = {}
+        
+        for (const entry of emissions){
+            landUsageData[entry.food_category] = entry.land_use
+        }
+        console.log(landUsageData)
+    })
 }
