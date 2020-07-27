@@ -1,5 +1,12 @@
+import Chartkick from "chartkick"
+import Chart from "chart.js"
+Chartkick.use(Chart)
+
 document.addEventListener("DOMContentLoaded", () => {
+    
+    
     createBarcodeForm()
+    renderChart()
 })
 
 const BASE_URL = "http://127.0.0.1:3000"
@@ -44,4 +51,8 @@ function fetchProduct(){
     }).catch(error => {
         document.getElementById("error").innerHTML = error
     })
+}
+
+function renderChart() {
+    new Chartkick.PieChart("chart-1", [["Blueberry", 44], ["Strawberry", 23]])
 }
