@@ -16,7 +16,7 @@ class FoodsController < ApplicationController
   # GET /foods/barcode/1
   def barcode_show
     @food = Food.find_by(gtin_upc: params[:id])
-    render json: @food
+    render json: @food, include: [:emissions]
   end 
 
   # POST /foods
