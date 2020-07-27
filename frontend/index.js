@@ -30,8 +30,16 @@ function fetchProduct(){
     })
     .then(food => {
         if(food === null) throw "Product Not Found"
+
         let foodProduct = new Food(food.brand_owner, food.gtin_upc, food.ingredients)
         foodProduct.renderProduct()
+
+        for (const emission of food.emissions){
+            let foodEmission = new Emission(emission.food_category, emission.land_use, 
+                emission.ghg_emissions, emission.acidifying_emission, emission.eutrophying_emissions,
+                emission.freshwater_withdrawl)
+            foodEmission.renderEmission()
+        }
 
     }).catch(error => {
         document.getElementById("error").innerHTML = error
