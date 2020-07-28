@@ -1,13 +1,13 @@
 class Emission {
-    constructor(food_category, land_use, ghg_emissions, acidifying_emissions, 
-        eutrophying_emissions, freshwater_withdrawl) 
+    constructor(category, land_use, ghg, acid, 
+        eutrophication, water_withdrawl) 
         {
-            this.food_category = food_category
+            this.category = category
             this.land_use = land_use
-            this.ghg_emissions = ghg_emissions
-            this.acidifying_emissions = acidifying_emissions
-            this.eutrophying_emissions = eutrophying_emissions
-            this.freshwater_withdrawl = freshwater_withdrawl
+            this.ghg = ghg
+            this.acid = acid
+            this.eutrophication = eutrophication
+            this.water_withdrawl = water_withdrawl
         }
 
     
@@ -17,20 +17,24 @@ class Emission {
         emissionDiv.innerHTML +=
         `
         <h2>Emission Category</h2>
-            <p>${this.food_category}</p>
+            <p>${this.category}</p>
         `
 
         let data = [{ 
             data: {
-                "Green House Gas Emissions": this.ghg_emissions,
-                "Freshwater Withdrawls": this.freshwater_withdrawl,
-                "Eutrophying Emissions": this.eutrophying_emissions,
-                "Acidification": this.acidifying_emissions,
+                "Green House Gas Emissions": this.ghg,
+                "Freshwater Withdrawls": this.water_withdrawl,
+                "Eutrophying Emissions": this.eutrophication,
+                "Acidification": this.acid,
                 "Land Usage": this.land_use 
             },
-            color: [assignColor("ghg", this.ghg_emissions), assignColor("water", this.freshwater_withdrawl),
-                    assignColor("eutrophying", this.eutrophying_emissions), assignColor("acid", this.acidifying_emissions),
-                    assignColor("land", this.land_use)]
+            color: [
+                assignColor("ghg", this.ghg), 
+                assignColor("water", this.water_withdrawl),
+                assignColor("eutrophication", this.eutrophication), 
+                assignColor("acid", this.acid),
+                assignColor("land", this.land_use)
+                ]
         }]
 
         new Chartkick.BarChart("chart-1", data, {legend: false})
@@ -44,7 +48,7 @@ function assignColor(data, value){
             range = [2, 30]
         case "water":
             range = [40, 900]
-        case "eutrophying":
+        case "eutrophication":
             range = [10, 70]
         case "acid":
             range = [15, 90]
