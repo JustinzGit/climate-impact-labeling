@@ -4,7 +4,7 @@ Chartkick.use(Chart)
 
 document.addEventListener("DOMContentLoaded", () => {
     createBarcodeForm()
-    renderEmissionData()
+    // renderEmissionData()
 })
 
 const BASE_URL = "http://127.0.0.1:3000"
@@ -41,7 +41,7 @@ function fetchProduct(){
 
         for (const emission of food.emissions){
             let foodEmission = new Emission(emission.food_category, emission.land_use, 
-                emission.ghg_emissions, emission.acidifying_emission, emission.eutrophying_emissions,
+                emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
                 emission.freshwater_withdrawl)
             foodEmission.renderEmission()
         }
@@ -56,7 +56,7 @@ function renderEmissionData() {
     .then(resp => resp.json())
     .then(emissions => {
         let landUsageData = {}
-        
+
         for (const entry of emissions){
             landUsageData[entry.food_category] = entry.land_use
         }
