@@ -4,7 +4,7 @@ Chartkick.use(Chart)
 
 document.addEventListener("DOMContentLoaded", () => {
     createBarcodeForm()
-    // renderEmissionData()
+    renderEmissionData()
 })
 
 const BASE_URL = "http://127.0.0.1:3000"
@@ -51,15 +51,29 @@ function fetchProduct(){
     })
 }
 
+
 function renderEmissionData() {
     fetch(`${BASE_URL}/emissions`)
     .then(resp => resp.json())
     .then(emissions => {
-        let landUsageData = {}
 
-        for (const entry of emissions){
-            landUsageData[entry.food_category] = entry.land_use
+        document.getElementById("select").addEventListener("change", () => {
+            renderSelection(event.target.value)
+        })
+
+        function renderSelection(userSelection = "ghg_emissions"){
+            let data = []
+            for (const entry of emissions){
+                if (entry[userSelection] > 1){
+                    data.push([entry.food_category, entry[userSelection]])
+                }
+            }
+            data.sort(function(a, b){
+                return b[1] - a[1]
+            })
+            new Chartkick.BarChart("chart-1", data, {legend: false})
         }
-        console.log(landUsageData)
+
+        renderSelection();
     })
 }
