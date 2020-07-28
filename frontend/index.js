@@ -57,14 +57,14 @@ function renderEmissionData() {
     .then(resp => resp.json())
     .then(emissions => {
 
-        document.getElementById("select").addEventListener("change", () => {
+        document.getElementById("data-select").addEventListener("change", () => {
             renderSelection(event.target.value)
         })
 
         function renderSelection(userSelection = "ghg_emissions"){
             let data = []
             for (const entry of emissions){
-                if (entry[userSelection] > 1){
+                if (entry[userSelection] > 0){
                     data.push([entry.food_category, entry[userSelection]])
                 }
             }
