@@ -7,14 +7,19 @@
         <script src="src/emission.js"></script>
     </head>
     <body>
-        
         <div id="error"></div>
-
         <h2>Product Emissions</h2>
-
         <div id="barcode-form"></div>
         <div id="product"></div>
         <div id="emission"></div>
-        <div id="chart-1" style="height: 300px;"></div>
+        <div id="selection">
+            <select id="data-select">
+                <option value="ghg_emissions">Green House Gas Emissions</option>
+                <option value="freshwater_withdrawl">Water Withdrawl</option>
+                <option value="acidifying_emissions">Acidifying Emissions</option>
+                <option value="eutrophying_emissions">Eutrophication</option>
+            </select>
+        </div>
+        <div id="chart-1" style="height: 700px; width: 800px;"></div>
     </body>
 </html>
