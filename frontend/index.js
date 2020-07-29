@@ -21,7 +21,7 @@ function createBarcodeForm(){
         <input type="submit">
     </form>
     `
-
+    
     barcodeForm.addEventListener("submit", fetchProduct)
 }
 
@@ -47,7 +47,21 @@ function searchProduct(){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
-        console.log(foods)
+        let resultsDiv = document.getElementById("search-results")
+
+        for (const food of foods){
+            let div = document.createElement("div")
+
+            div.addEventListener("click", () => {
+                console.log(event.target)
+            })
+
+            let p = document.createElement("p")
+            p.innerText = `${food.name}`
+            
+            div.appendChild(p)
+            resultsDiv.appendChild(div)
+        }
     })
 }
 
