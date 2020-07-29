@@ -50,6 +50,10 @@ function searchProduct(){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
+
+        // Remove search results if present
+        document.getElementById("search-results").innerHTML = ""
+
         if (foods.length === 0){
             document.getElementById("error").innerHTML = "No Products Found"
         }
