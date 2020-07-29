@@ -38,6 +38,7 @@ function fetchProduct(){
 
         let foodProduct = new Food(food.brand_owner, food.gtin_upc, food.ingredients)
         foodProduct.renderProduct()
+        renderEmissionData()
 
         for (const emission of food.emissions){
             let foodEmission = new Emission(emission.food_category, emission.land_use, 
@@ -71,7 +72,7 @@ function renderEmissionData() {
             data.sort(function(a, b){
                 return b[1] - a[1]
             })
-            new Chartkick.BarChart("chart-1", data, {legend: false})
+            new Chartkick.BarChart("emissions-chart", data, {legend: false})
         }
 
         renderSelection();
