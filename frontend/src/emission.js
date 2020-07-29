@@ -22,11 +22,11 @@ class Emission {
 
         let data = [{ 
             data: {
-                "Green House Gas Emissions": this.ghg,
-                "Freshwater Withdrawls": this.water_withdrawl,
-                "Eutrophying Emissions": this.eutrophication,
-                "Acidification": this.acid,
-                "Land Usage": this.land_use 
+                "Green House Gas Emissions (kg CO2eq)": this.ghg,
+                "Freshwater Withdrawls (L)": this.water_withdrawl,
+                "Eutrophying Emissions (g PO43-eq)": this.eutrophication,
+                "Acidifying Emissions (g SO2eq)": this.acid,
+                "Land Usage (m2)": this.land_use 
             },
             color: [
                 assignColor("ghg", this.ghg), 
@@ -37,7 +37,7 @@ class Emission {
                 ]
         }]
 
-        new Chartkick.BarChart("chart-1", data, {legend: false})
+        new Chartkick.BarChart("product-emissions-chart", data, {legend: false})
     }
 }
 
