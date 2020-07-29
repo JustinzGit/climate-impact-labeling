@@ -4,7 +4,7 @@ Chartkick.use(Chart)
 
 document.addEventListener("DOMContentLoaded", () => {
     createBarcodeForm()
-    renderEmissionData()
+    fetchEmissions()
 })
 
 const BASE_URL = "http://127.0.0.1:3000"
@@ -53,7 +53,7 @@ function fetchProduct(){
 }
 
 
-function renderEmissionData() {
+function fetchEmissions() {
     fetch(`${BASE_URL}/emissions`)
     .then(resp => resp.json())
     .then(emissions => {
