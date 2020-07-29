@@ -21,8 +21,11 @@ function createBarcodeForm(){
         <input type="submit">
     </form>
     `
-    
-    barcodeForm.addEventListener("submit", fetchProduct)
+
+    barcodeForm.addEventListener("submit", () => {
+        let barcode = document.getElementById("barcode").value
+        fetchProduct(barcode)
+    })
 }
 
 function createSearchForm() {
@@ -50,25 +53,26 @@ function searchProduct(){
         let resultsDiv = document.getElementById("search-results")
 
         for (const food of foods){
+            let p = document.createElement("p")
+            
             let div = document.createElement("div")
+            div.setAttribute("id", food.gtin_upc)
+            div.innerText = `${food.name}`
+
+            p.append(div)
+            resultsDiv.appendChild(p)
 
             div.addEventListener("click", () => {
-                console.log(event.target)
+                fetchProduct(event.target.id)
             })
-
-            let p = document.createElement("p")
-            p.innerText = `${food.name}`
             
-            div.appendChild(p)
-            resultsDiv.appendChild(div)
         }
     })
 }
 
-function fetchProduct(){
+function fetchProduct(barcode){
     event.preventDefault()
-    let barcode = document.getElementById("barcode").value
-    
+
     fetch(`${BASE_URL}/foods/barcode/${barcode}`)
     .then(resp => {
         if(!resp.ok) throw "Product Not Found"
