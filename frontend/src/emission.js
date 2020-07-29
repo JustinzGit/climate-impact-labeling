@@ -11,7 +11,7 @@ class Emission {
         }
 
     
-    renderEmission() {
+    renderProductEmission() {
         let emissionDiv = document.getElementById("emission")
 
         emissionDiv.innerHTML +=

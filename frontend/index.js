@@ -38,13 +38,13 @@ function fetchProduct(){
 
         let foodProduct = new Food(food.brand_owner, food.gtin_upc, food.ingredients)
         foodProduct.renderProduct()
-        renderEmissionData()
+        fetchEmissions()
 
         for (const emission of food.emissions){
             let foodEmission = new Emission(emission.food_category, emission.land_use, 
                 emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
                 emission.freshwater_withdrawl)
-            foodEmission.renderEmission()
+            foodEmission.renderProductEmission()
         }
 
     }).catch(error => {
