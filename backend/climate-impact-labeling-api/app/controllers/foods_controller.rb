@@ -19,6 +19,12 @@ class FoodsController < ApplicationController
     render json: @food, include: [:emissions]
   end 
 
+  # GET /foods/search/name
+  def search
+    @foods = Food.search(params[:name]).first(5)
+    render json: @foods
+  end 
+
   # POST /foods
   def create
     @food = Food.new(food_params)
