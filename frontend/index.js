@@ -44,7 +44,7 @@ function fetchProduct(){
             let foodEmissionData = new Emission(emission.food_category, emission.land_use, 
                 emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
                 emission.freshwater_withdrawl)
-            foodEmissionData.renderProductEmission()
+            foodEmissionData.renderEmission()
         }
 
     }).catch(error => {
