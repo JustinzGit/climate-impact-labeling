@@ -4,6 +4,7 @@ Chartkick.use(Chart)
 
 document.addEventListener("DOMContentLoaded", () => {
     createBarcodeForm()
+    createSearchForm()
     fetchEmissions()
 })
 
@@ -22,6 +23,21 @@ function createBarcodeForm(){
     `
 
     barcodeForm.addEventListener("submit", fetchProduct)
+}
+
+function createSearchForm() {
+    let searchForm = document.getElementById("search-form")
+
+    searchForm.innerHTML += 
+    `
+    <form>
+        <label for="search">Enter By Product By Name</label><br>
+        <p><input type="text" id="name"></p>
+        <input type="submit">
+    </form>
+    `
+
+    searchForm.addEventListener("submit")
 }
 
 function fetchProduct(){
