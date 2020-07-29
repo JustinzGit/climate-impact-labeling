@@ -50,22 +50,27 @@ function searchProduct(){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
-        let resultsDiv = document.getElementById("search-results")
+        if (foods.length === 0){
+            document.getElementById("error").innerHTML = "No Products Found"
+        }
+        else {
+            let resultsDiv = document.getElementById("search-results")
 
-        for (const food of foods){
-            let p = document.createElement("p")
-            
-            let div = document.createElement("div")
-            div.setAttribute("id", food.gtin_upc)
-            div.innerText = `${food.name}`
+            for (const food of foods){
+                let p = document.createElement("p")
+                
+                let div = document.createElement("div")
+                div.setAttribute("id", food.gtin_upc)
+                div.innerText = `${food.name}`
 
-            p.append(div)
-            resultsDiv.appendChild(p)
+                p.append(div)
+                resultsDiv.appendChild(p)
 
-            div.addEventListener("click", () => {
-                fetchProduct(event.target.id)
-            })
-            
+                div.addEventListener("click", () => {
+                    fetchProduct(event.target.id)
+                })
+                
+            }
         }
     })
 }
