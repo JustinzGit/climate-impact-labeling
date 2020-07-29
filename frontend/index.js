@@ -37,7 +37,18 @@ function createSearchForm() {
     </form>
     `
 
-    searchForm.addEventListener("submit")
+    searchForm.addEventListener("submit", searchProduct)
+}
+
+function searchProduct(){
+    event.preventDefault()
+    let name = document.getElementById("name").value
+
+    fetch(`${BASE_URL}/foods/search/${name}`)
+    .then(resp => {return resp.json()})
+    .then(foods => {
+        console.log(foods)
+    })
 }
 
 function fetchProduct(){
