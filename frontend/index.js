@@ -41,10 +41,10 @@ function fetchProduct(){
         fetchEmissions()
 
         for (const emission of food.emissions){
-            let foodEmission = new Emission(emission.food_category, emission.land_use, 
+            let foodEmissionData = new Emission(emission.food_category, emission.land_use, 
                 emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
                 emission.freshwater_withdrawl)
-            foodEmission.renderProductEmission()
+            foodEmissionData.renderProductEmission()
         }
 
     }).catch(error => {
