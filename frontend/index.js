@@ -91,6 +91,10 @@ function fetchProduct(barcode){
         if(food === null) throw "Product Not Found"
 
         let foodProduct = new Food(food.brand_owner, food.gtin_upc, food.ingredients)
+        
+        // Remove previous product data
+        document.getElementById("product").innerHTML = ""
+
         foodProduct.renderProduct()
         fetchEmissions()
 
