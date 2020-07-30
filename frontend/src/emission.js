@@ -13,6 +13,9 @@ class Emission {
     
     renderEmission() {
         let emissionDiv = document.getElementById("emission")
+        
+        // Remove previous category label
+        emissionDiv.innerHTML = ""
 
         emissionDiv.innerHTML +=
         `
