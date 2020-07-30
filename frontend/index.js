@@ -52,7 +52,7 @@ function searchProduct(){
     .then(foods => {
 
         // Remove search results if present
-        document.getElementById("search-results").innerHTML = ""
+        removeSearchResults()
 
         if (foods.length === 0){
             document.getElementById("error").innerHTML = "No Products Found"
@@ -71,6 +71,7 @@ function searchProduct(){
                 resultsDiv.appendChild(p)
 
                 div.addEventListener("click", () => {
+                    removeSearchResults()
                     fetchProduct(event.target.id)
                 })
                 
@@ -135,4 +136,9 @@ function fetchEmissions() {
 
         renderSelection();
     })
+}
+
+// Remove previous search results
+function removeSearchResults(){
+    document.getElementById("search-results").innerHTML = ""
 }
