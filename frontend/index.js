@@ -16,9 +16,9 @@ function createBarcodeForm(){
     barcodeForm.innerHTML +=
     `
     <form>
-        <label for="barcode">Enter Product Barcode</label><br>
+        <label for="barcode">Search Product By Barcode</label><br>
         <p><input type="text" id="barcode"></p>
-        <input type="submit">
+        <button type="submit" class="btn btn-secondary">Search</button>
     </form>
     `
 
@@ -34,9 +34,9 @@ function createSearchForm() {
     searchForm.innerHTML += 
     `
     <form>
-        <label for="search">Enter By Product By Name</label><br>
+        <label for="search">Search Product By Name</label><br>
         <p><input type="text" id="name"></p>
-        <input type="submit">
+        <button type="submit" class="btn btn-secondary">Search</button>
     </form>
     `
 
