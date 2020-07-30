@@ -1,6 +1,7 @@
 class Food {
-    constructor(owner, barcode, ingredients)
+    constructor(name, owner, barcode, ingredients)
     {
+        this.name = name
         this.owner = owner
         this.barcode = barcode
         this.ingredients = ingredients
@@ -13,7 +14,7 @@ class Food {
         `
         <h2>Product Information</h2>
             <ul>
-                <li>Barcode: ${this.barcode}</li>
+                <li>Name: ${this.name}</li>
                 <li>Brand Owner: ${this.owner}</li>
             </ul>
 
