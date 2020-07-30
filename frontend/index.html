@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
         
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/stylesheet.css">
 
         <title>Climate Impact Labeling</title>
         <script src="dist/main.js"></script>
@@ -12,31 +13,35 @@
         <script src="src/emission.js"></script>
     </head>
     <body>
-        <div id="error"></div>
+        <div class="container">
+            <div id="error"></div>
 
-        <h2>Climate Impact Labeling</h2>
-        <div id="search-form"></div>
-        <div id="search-results"></div>
+            <h2>Climate Impact Labeling</h2>
+            <div id="search-form"></div>
+            <div id="search-results"></div>
 
-        <div id="barcode-form"></div>
-        <div id="product-data"></div>
+            <div id="barcode-form"></div>
+            <div id="product-data"></div>
+        
 
-        <div id="selection">
-            <select id="data-select">
-                <option value="ghg_emissions">Green House Gas Emissions</option>
-                <option value="acidifying_emissions">Acidifying Emissions</option>
-                <option value="freshwater_withdrawl">Water Withdrawl</option>
-                <option value="eutrophying_emissions">Eutrophication</option>
-            </select>
+            <div id="selection">
+                <select class="custom-select" id="data-select">
+                    <option value="ghg_emissions">Green House Gas Emissions</option>
+                    <option value="acidifying_emissions">Acidifying Emissions</option>
+                    <option value="freshwater_withdrawl">Water Withdrawl</option>
+                    <option value="eutrophying_emissions">Eutrophication</option>
+                </select>
+            </div>
+            <div id="emissions-chart" ></div>
+
+            <div id="emission"></div>
+            <div id="product-emissions-chart" style="height: 300px; width: 800px;"></div>
+
+            <div id="nutrients">
+                
+            </div>
         </div>
-        <div id="emissions-chart" style="height: 700px; width: 800px;"></div>
-
-        <div id="emission"></div>
-        <div id="product-emissions-chart" style="height: 300px; width: 800px;"></div>
-
-        <div id="nutrients">
-            
-        </div>
+        
 
         <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
