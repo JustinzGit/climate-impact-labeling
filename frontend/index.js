@@ -89,12 +89,13 @@ function fetchProduct(barcode){
     .then(food => {
         if(food === null) throw "Product Not Found"
 
-        let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, food.ingredients)
-        
+        let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, food.ingredients, food.food_nutrients)
+
         // Remove previous product data
         document.getElementById("product-data").innerHTML = ""
 
         foodProduct.renderProduct()
+        foodProduct.renderNutrients()
         fetchEmissions()
 
         // Remove previous product emission data 
