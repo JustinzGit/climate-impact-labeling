@@ -1,0 +1,35 @@
+.container {
+    /* enables flex content for children(flex items) */
+    /* display: flex; */
+    
+    /* viewport height  */
+    /* height: 90vh; */
+
+    margin-top: 25px;
+    
+    /* centers along main axis */
+    justify-content: center;
+
+    /* centers along cross axis */
+    /* align-items: center; */
+    
+    /* centers buttons */
+    text-align: center;
+}
+
+form {
+    margin-top: 20px;
+}
+
+.custom-select {
+    width: 240px;
+}
+
+#selection {
+    margin-top: 25px;
+}
+
+#emissions-chart {
+    height: 700px; 
+    /* width: 800px; */
+}
