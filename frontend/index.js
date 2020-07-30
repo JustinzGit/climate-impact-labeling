@@ -50,8 +50,6 @@ function searchProduct(){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
-
-        // Remove search results if present
         removeSearchResults()
 
         if (foods.length === 0){
@@ -98,6 +96,10 @@ function fetchProduct(barcode){
 
         foodProduct.renderProduct()
         fetchEmissions()
+
+        // Remove previous product emission data 
+        document.getElementById("emission").innerHTML = ""
+        document.getElementById("product-emissions-chart").innerHTML = ""
 
         for (const emission of food.emissions){
             let foodEmissionData = new Emission(emission.food_category, emission.land_use, 
