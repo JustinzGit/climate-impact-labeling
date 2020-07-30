@@ -7,7 +7,7 @@ class Food {
     }
 
     renderProduct() {
-        let productDiv = document.getElementById("product")
+        let productDiv = document.getElementById("product-data")
 
         productDiv.innerHTML += 
         `
