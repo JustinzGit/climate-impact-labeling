@@ -50,12 +50,11 @@ form {
     margin-top: 40px;
 }
 
-/* .image {
-  width: 250px;
-  float: left;
-  margin: 20px;
-} */
-
+#product-emissions-chart {
+  height: 350px;
+  width: 500px;
+  margin: auto;
+}
 
 .performance-facts {
   border: 1px solid black;
