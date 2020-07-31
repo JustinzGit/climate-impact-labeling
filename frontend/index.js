@@ -1,5 +1,6 @@
 import Chartkick from "chartkick"
 import Chart from "chart.js"
+import chartkick from "chartkick"
 Chartkick.use(Chart)
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -134,11 +135,47 @@ function fetchEmissions() {
             data.sort(function(a, b){
                 return b[1] - a[1]
             })
+
+            addChartLabels(userSelection)
             new Chartkick.BarChart("emissions-chart", data, {legend: false})
         }
 
         renderSelection();
     })
+}
+
+function addChartLabels(userSelection){
+    let xAxis  = document.getElementById("x-axis")
+    let chartTitle = document.getElementById("chart-title")
+    chartTitle.innerHTML = ""
+    xAxis.innerHTML = ""
+
+    switch(userSelection){
+        case "ghg_emissions":
+            chartTitle.innerHTML += `Green House Gas Emissions`
+            xAxis.innerHTML += `kg CO<sub>2</sub>eq per kg/L Food Product`
+            break
+
+        case "acidifying_emissions":
+            chartTitle.innerHTML += `Acidifying Emissions`
+            xAxis.innerHTML += `g SO<sub>2</sub>eq per kg/L Food Product`
+            break
+
+        case "freshwater_withdrawl":
+            chartTitle.innerHTML += `Freshwater Withdrawl`
+            xAxis.innerHTML += `Liter per kg/L Food Product`
+            break
+        
+        case "eutrophying_emissions":
+            chartTitle.innerHTML += `Eutrophication`
+            xAxis.innerHTML += `g PO<sub>4</sub><sup>3-</sup>eq per kg/L Food Product`
+            break
+        
+        case "land_use":
+            chartTitle.innerHTML += `Land Usage`
+            xAxis.innerHTML += `m<sup>2</sup> per kg/L Food Product`
+            break
+    }
 }
 
 // Remove previous search results
