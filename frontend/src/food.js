@@ -13,12 +13,12 @@ class Food {
 
         productDiv.innerHTML += 
         `
-        <h2>Product Details</h2>
-            <b><p>${this.name}</p></b>
-            <p>Brand Owner: ${this.owner}</p>
+        <h2><u>Product Details</u></h2>
+            <br>
+            <h4 style="color: blue">${this.name}</h4>
+            <p><b>Brand Owner:</b> ${this.owner}</p>
     
-            <p>Ingredients:</p>
-            <p>${this.ingredients}</p>
+            <p><b>Ingredients:</b> ${this.ingredients}</p>
         `
     }
 
