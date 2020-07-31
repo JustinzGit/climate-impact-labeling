@@ -31,7 +31,6 @@ form {
 
 #emissions-chart {
     height: 700px; 
-    /* width: 800px; */
 }
 
 #x-axis {
@@ -40,4 +39,9 @@ form {
 
 #chart-title{
     margin-top: 40px;
+}
+
+#search-results {
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
