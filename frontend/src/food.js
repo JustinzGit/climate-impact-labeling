@@ -9,6 +9,7 @@ class Food {
     }
 
     renderProduct() {
+        console.log(this)
         let productDiv = document.getElementById("product-data")
 
         productDiv.innerHTML += 
@@ -40,160 +41,96 @@ class Food {
             }
         }
 
+        function calculateFatCalories(fat_amount){
+            if (fat_amount === undefined){
+                return `<b style="color: red;">(N/A)</b>`
+            }
+            else {
+                return fat_amount * 9
+            }
+        }
+
         document.getElementById("nutrients").innerHTML += 
         `
         <section class="performance-facts">
         <header class="performance-facts__header">
             <h1 class="performance-facts__title">Nutrition Facts</h1>
             <p>Serving Size: ${obtainNutrient(this.serving_size)} 
-            <br>Unit: ${obtainNutrient(this.serving_size_unit)} (about (TODO)g)
-            <p>Serving Per Container (TODO)</p>
+            <br>Unit: ${obtainNutrient(this.serving_size_unit)} (about ***g)
+            <p>Serving Per Container ***</p>
         </header>
         <table class="performance-facts__table">
             <thead>
             <tr>
-                <th colspan="3" class="small-info">
-                Amount Per Serving
-                </th>
+                <th colspan="3" class="small-info">Amount Per Serving</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-                <th colspan="2">
-                <b>Calories</b>
-                ${obtainNutrient(nutrients["1008"])}
-                </th>
-                <td>
-                Calories from Fat
-                ${obtainNutrient(nutrients["1085"]) * 9}
-                </td>
+                <th colspan="2"><b>Calories</b> ${obtainNutrient(nutrients["1008"])}</th>
+                <td>Calories from Fat ${calculateFatCalories(nutrients["1004"])}</td>
             </tr>
             <tr class="thick-row">
-                <td colspan="3" class="small-info">
-                <b>% Daily Value*</b>
-                </td>
+                <td colspan="3" class="small-info"><b>% Daily Value*</b></td>
             </tr>
             <tr>
-                <th colspan="2">
-                <b>Total Fat</b>
-                ${obtainNutrient(nutrients["1085"])}g
-                </th>
-                <td>
-                <b>22%</b>
-                </td>
+                <th colspan="2"><b>Total Fat</b> ${obtainNutrient(nutrients["1004"])}g</th>
+                <td><b>*%</b></td>
             </tr>
             <tr>
-                <td class="blank-cell">
-                </td>
-                <th>
-                Saturated Fat
-                ${obtainNutrient(nutrients["1258"])}g
-                </th>
-                <td>
-                <b>22%</b>
-                </td>
+                <td class="blank-cell"></td>
+                <th>Saturated Fat ${obtainNutrient(nutrients["1258"])}g</th>
+                <td><b>*%</b></td>
             </tr>
             <tr>
-                <td class="blank-cell">
-                </td>
-                <th>
-                Trans Fat
-                ${obtainNutrient(nutrients["1257"])}g
-                </th>
-                <td>
-                </td>
+                <td class="blank-cell"></td>
+                <th>Trans Fat ${obtainNutrient(nutrients["1257"])}g</th>
+                <td></td>
             </tr>
             <tr>
-                <th colspan="2">
-                <b>Cholesterol</b>
-                ${obtainNutrient(nutrients["1253"])}mg
-                </th>
-                <td>
-                <b>18%</b>
-                </td>
+                <th colspan="2"><b>Cholesterol</b> ${obtainNutrient(nutrients["1253"])}mg</th>
+                <td><b>*%</b></td>
             </tr>
             <tr>
-                <th colspan="2">
-                <b>Sodium</b>
-                ${obtainNutrient(nutrients["1093"])}mg
-                </th>
-                <td>
-                <b>2%</b>
-                </td>
+                <th colspan="2"><b>Sodium</b> ${obtainNutrient(nutrients["1093"])}mg</th>
+                <td><b>*%</b></td>
             </tr>
             <tr>
-                <th colspan="2">
-                <b>Total Carbohydrate</b>
-                ${obtainNutrient(nutrients["1050"])}g
-                </th>
-                <td>
-                <b>6%</b>
-                </td>
+                <th colspan="2"><b>Total Carbohydrate</b> ${obtainNutrient(nutrients["1050"])}g</th>
+                <td><b>*%</b></td>
             </tr>
             <tr>
-                <td class="blank-cell">
-                </td>
-                <th>
-                Dietary Fiber
-                ${obtainNutrient(nutrients["2033"])}g
-                </th>
-                <td>
-                <b>4%</b>
-                </td>
+                <td class="blank-cell"></td>
+                <th>Dietary Fiber ${obtainNutrient(nutrients["2033"])}g</th>
+                <td><b>*%</b></td>
             </tr>
             <tr>
-                <td class="blank-cell">
-                </td>
-                <th>
-                Sugars
-                ${obtainNutrient(nutrients["2000"])}g
-                </th>
-                <td>
-                </td>
+                <td class="blank-cell"></td>
+                <th>Sugars ${obtainNutrient(nutrients["2000"])}g</th>
+                <td></td>
             </tr>
             <tr class="thick-end">
-                <th colspan="2">
-                <b>Protein</b>
-                ${obtainNutrient(nutrients["1003"])}g
-                </th>
-                <td>
-                </td>
+                <th colspan="2"><b>Protein</b> ${obtainNutrient(nutrients["1003"])}g</th>
+                <td></td>
             </tr>
             </tbody>
         </table>
-
+    
         <table class="performance-facts__table--grid">
             <tbody>
             <tr>
-                <td colspan="2">
-                Vitamin A
-                ${obtainNutrient(nutrients["1104"])}
-                ${obtainNutrient(nutrients["1106"])}
-                10%
-                </td>
-                <td>
-                Vitamin C
-                ${obtainNutrient(nutrients["1162"])}mg
-                0%
-                </td>
+                <td colspan="2">Vitamin A ${obtainNutrient(nutrients["1104"])} IU *%</td>
+                <td>Vitamin C ${obtainNutrient(nutrients["1162"])}mg *%</td>
             </tr>
             <tr class="thin-end">
-                <td colspan="2">
-                Calcium
-                ${obtainNutrient(nutrients["1087"])}
-                10%
-                </td>
-                <td>
-                Iron
-                ${obtainNutrient(nutrients["1089"])}
-                6%
-                </td>
+                <td colspan="2">Calcium ${obtainNutrient(nutrients["1087"])}mg *%</td>
+                <td>Iron ${obtainNutrient(nutrients["1089"])}mg *%</td>
             </tr>
             </tbody>
         </table>
-
+    
         <p class="small-info">* Percent Daily Values are based on a 2,000 calorie diet. Your daily values may be higher or lower depending on your calorie needs:</p>
-
+    
         <table class="performance-facts__table--small small-info">
             <thead>
             <tr>
@@ -242,7 +179,7 @@ class Food {
             </tr>
             </tbody>
         </table>
-
+    
         <p class="small-info">
             Calories per gram:
         </p>
