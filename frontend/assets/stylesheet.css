@@ -33,3 +33,7 @@ form {
     height: 700px; 
     /* width: 800px; */
 }
+
+#x-axis {
+    margin-left: 152px;
+}
