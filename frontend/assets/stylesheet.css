@@ -1,20 +1,19 @@
-.container {
-    /* enables flex content for children(flex items) */
-    /* display: flex; */
-    
-    /* viewport height  */
-    /* height: 90vh; */
+.container-fluid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
 
-    margin-top: 25px;
-    
-    /* centers along main axis */
-    justify-content: center;
 
-    /* centers along cross axis */
-    /* align-items: center; */
-    
-    /* centers buttons */
-    text-align: center;
+#section-one {
+  flex: 0 1 500px; /*  No stretching: */
+  margin: 5px;
+}
+
+#section-two {
+  flex: 1 1 auto; /*  Stretching: */
+  margin: 5px;
 }
 
 form {
