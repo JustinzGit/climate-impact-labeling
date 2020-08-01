@@ -15,10 +15,10 @@ class Food {
         `
         <h2><u>Product Details</u></h2>
             <br>
-            <h4 style="color: blue">${this.name}</h4>
+            <h4>${this.name}</h4>
             <p><b>Brand Owner:</b> ${this.owner}</p>
-    
-            <p><b>Ingredients:</b> ${this.ingredients}</p>
+            <b>Ingredients</b> 
+            <p>${this.ingredients}</p>
         `
     }
 
