@@ -38,11 +38,10 @@ class Emission {
                 assignColor("land", this.land_use)
                 ]
         }]
-
-        new Chartkick.BarChart("product-emissions-chart", data, {legend: false})
-
         // Reveal Chart
         document.getElementById("product-emissions-chart",).style.display = "block"
+
+        new Chartkick.ColumnChart("product-emissions-chart", data, {legend: false})
     }
 }
 
