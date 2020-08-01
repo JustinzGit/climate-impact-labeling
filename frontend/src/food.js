@@ -10,6 +10,7 @@ class Food {
 
     renderProduct() {
         let productDiv = document.getElementById("product-data")
+        let ingredientsDiv = document.getElementById("ingredients")
 
         productDiv.innerHTML += 
         `
@@ -17,9 +18,9 @@ class Food {
             <br>
             <h4>${this.name}</h4>
             <p><b>Brand Owner:</b> ${this.owner}</p>
-            <b>Ingredients</b> 
-            <p>${this.ingredients}</p>
         `
+        
+        ingredientsDiv.innerHTML = `<b>Ingredients</b><p>${this.ingredients}</p>`
     }
 
     renderNutrients() {
