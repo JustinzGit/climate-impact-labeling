@@ -22,7 +22,6 @@ class Emission {
         <h2>Emission Category</h2>
             <p>${this.category}</p>
         `
-
         let data = [{ 
             data: {
                 "GHG Emissions": this.ghg,
@@ -49,18 +48,22 @@ function assignColor(data, value){
     switch(data){
         case "ghg":
             range = [2, 30]
+            break
         case "water":
             range = [40, 900]
+            break
         case "eutrophication":
             range = [10, 70]
+            break
         case "acid":
             range = [15, 90]
+            break
         case "land":
             range = [21, 60]
+            break
     }
 
     if (value < range[0]) return "#1aa260"
-    else if (value >= range[0] && value < range[1]) return "orange"
+    else if (value >= range[0] && value < range[1]) return "#ff781f"
     else if (value >= range[1]) return "#de5246"
-   
 }
