@@ -39,7 +39,7 @@ class Emission {
                 ]
         }]
 
-        new Chartkick.ColumnChart("product-emissions-chart", data, {legend: false})
+        new Chartkick.BarChart("product-emissions-chart", data, {legend: false})
 
         // Reveal Chart
         document.getElementById("product-emissions-chart",).style.display = "block"
