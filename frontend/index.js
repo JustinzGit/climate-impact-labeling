@@ -1,6 +1,6 @@
 import Chartkick from "chartkick"
 import Chart from "chart.js"
-import chartkick from "chartkick"
+
 Chartkick.use(Chart)
 
 document.addEventListener("DOMContentLoaded", () => {
