@@ -50,6 +50,7 @@ form {
 }
 
 #product-emissions-chart {
+  display: none;
   height: 350px;
   width: 500px;
   margin: auto;
