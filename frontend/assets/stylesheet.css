@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+#ingredients {
+  margin-top: 25px;
+}
+
 
 #section-one {
   flex: 0 1 500px; /*  No stretching: */
@@ -29,7 +33,9 @@ form {
 }
 
 #emissions-chart {
+    
     height: 700px; 
+    width: 95%;
 }
 
 #x-axis {
