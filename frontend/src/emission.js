@@ -20,7 +20,7 @@ class Emission {
         emissionDiv.innerHTML +=
         `
         <h2>Emission Category</h2>
-            <p>${this.category}</p>
+            <b>${this.category}</b>
         `
         let data = [{ 
             data: {
@@ -66,6 +66,6 @@ function assignColor(data, value){
     }
 
     if (value < range[0]) return "#1aa260"
-    else if (value >= range[0] && value < range[1]) return "#ff781f"
+    else if (value >= range[0] && value < range[1]) return "#ffc107"
     else if (value >= range[1]) return "#de5246"
 }
