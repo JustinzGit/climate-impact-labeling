@@ -154,7 +154,7 @@ function fetchProduct(barcode){
                 form.addEventListener("submit", () => {
                     event.preventDefault()
                     let food_category = document.getElementById("data-select").value
-                    Food.assignCategory(food, food_category)
+                    Food.assignCategory(food.id, food_category)
                 })
                 form.append(p, submitBtn)
 
