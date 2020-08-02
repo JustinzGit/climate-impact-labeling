@@ -1,6 +1,5 @@
 import Chartkick from "chartkick"
 import Chart from "chart.js"
-
 Chartkick.use(Chart)
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -54,7 +53,7 @@ function searchProduct(){
         removeSearchResults()
 
         if (foods.length === 0){
-            document.getElementById("error").innerHTML = "No Products Found"
+            document.getElementById("alert").innerHTML = "No Products Found"
         }
         else {
             let resultsDiv = document.getElementById("search-results")
@@ -113,7 +112,7 @@ function fetchProduct(barcode){
         }
 
     }).catch(error => {
-        document.getElementById("error").innerHTML = error
+        document.getElementById("alert").innerHTML = error
     })
 }
 
