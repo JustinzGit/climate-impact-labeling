@@ -116,7 +116,6 @@ function fetchProduct(barcode){
     })
 }
 
-
 function fetchEmissions() {
     fetch(`${BASE_URL}/emissions`)
     .then(resp => resp.json())
@@ -133,10 +132,8 @@ function fetchEmissions() {
                     data.push([entry.food_category, entry[userSelection]])
                 }
             }
-            data.sort(function(a, b){
-                return b[1] - a[1]
-            })
-
+            data.sort((a, b) => b[1] - a[1])
+           
             addChartLabels(userSelection)
             new Chartkick.BarChart("emissions-chart", data, {legend: false})
         }
