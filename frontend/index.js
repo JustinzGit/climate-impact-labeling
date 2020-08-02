@@ -98,7 +98,7 @@ function fetchProduct(barcode){
         document.getElementById("product-data").innerHTML = ""
 
         foodProduct.renderProduct()
-        foodProduct.renderNutrients()
+        foodProduct.renderNutrition()
         fetchEmissions()
 
         // Remove previous product emission data 
