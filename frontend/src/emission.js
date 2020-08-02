@@ -17,11 +17,7 @@ class Emission {
         // Remove previous category label
         emissionDiv.innerHTML = ""
 
-        emissionDiv.innerHTML +=
-        `
-        <h2>Emission Category</h2>
-            <b>${this.category}</b>
-        `
+        
         let data = [{ 
             data: {
                 "GHG Emissions": this.ghg,
@@ -38,9 +34,14 @@ class Emission {
                 assignColor("land", this.land_use)
                 ]
         }]
+
+        emissionDiv.innerHTML +=
+        `
+            <b>${this.category}</b>
+        `
+
         // Reveal Chart
         document.getElementById("product-emissions-chart",).style.display = "block"
-
         new Chartkick.ColumnChart("product-emissions-chart", data, {legend: false})
     }
 }
@@ -49,7 +50,7 @@ function assignColor(data, value){
     let range
     switch(data){
         case "ghg":
-            range = [2, 30]
+            range = [10, 30]
             break
         case "water":
             range = [40, 900]
@@ -65,7 +66,32 @@ function assignColor(data, value){
             break
     }
 
-    if (value < range[0]) return "#1aa260"
+    if (data === "ghg" && value < range[0]){
+        document.getElementById("emission").innerHTML +=
+        `
+          <h3>Greenhouse Gas Emissions: <b style="color: #1aa260;">Low</b></h3>
+          <p>Choosing more products of this category lowers your carbon footprint!</p>
+        `
+        return "#1aa260"
+    }
+    else if (data === "ghg" && value >= range[0] && value < range[1]){
+        document.getElementById("emission").innerHTML +=
+        `
+          <h3>Greenhouse Gas Emissions: <b style="color: #ffc107;">Moderate</b></h3>
+          <p>Choosing products of this category are smart alternatives to those with high emissions</p>
+        `
+        return "#ffc107"
+    }
+    else if (data === "ghg" && value >= range[1]){
+        document.getElementById("emission").innerHTML +=
+        `
+          <h3>Greenhouse Gas Emissions: <b style="color: #de5246";>High</b></h3>
+          <p>Limiting your consumption of these products to once or twice a week<br>can make a huge difference on green house emssions</p>
+        `
+        return "#de5246"
+    }
+
+    else if (value < range[0]) return "#1aa260"
     else if (value >= range[0] && value < range[1]) return "#ffc107"
     else if (value >= range[1]) return "#de5246"
 }
