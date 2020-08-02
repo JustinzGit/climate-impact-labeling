@@ -42,13 +42,14 @@ function createSearchForm() {
     </form>
     `
 
-    searchForm.addEventListener("submit", searchProductByName)
+    searchForm.addEventListener("submit", () => {
+        event.preventDefault()
+        searchProductByName(document.getElementById("name").value)
+    })
 }
 
-function searchProductByName(){
-    event.preventDefault()
-
-    fetch(`${BASE_URL}/foods/search/${document.getElementById("name").value}`)
+function searchProductByName(name){
+    fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
         removeSearchResults()
@@ -72,6 +73,7 @@ function searchProductByName(){
     })
 }
 
+// Renders product information 
 function fetchProduct(id){
     let fetchParam
     if (id.toString().length > 6) {
@@ -89,76 +91,83 @@ function fetchProduct(id){
     .then(food => {
         if(food === null) throw "Product Not Found"
 
-        let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, food.ingredients, food.food_nutrients)
+        let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, 
+            food.ingredients, food.food_nutrients)
 
         // Remove previous product data
         document.getElementById("product-data").innerHTML = ""
 
         foodProduct.renderProduct()
-        foodProduct.renderNutrition()
-        fetchEmissions()
+        fetchProductEmissions(food)
 
-        // Remove previous product emission data 
-        document.getElementById("emission").innerHTML = ""
-        document.getElementById("product-emissions-chart").innerHTML = ""
-        document.getElementById("product-emissions-chart",).style.display = "none"
+    }).catch(error => {
+        document.getElementById("alert").innerHTML = error
+    })
+}
 
-        if (food.emissions.length === 0){
-            let emissionDiv = document.getElementById("emission")
+// Fetch product emissions or assign emission category to product
+function fetchProductEmissions(food){
+    // Remove previous product emission data 
+    document.getElementById("emission").innerHTML = ""
+    document.getElementById("product-emissions-chart").innerHTML = ""
+    document.getElementById("product-emissions-chart",).style.display = "none"
 
-            emissionDiv.innerHTML +=
-            `
-            <h3>This Product Hasn't Been Assigned A Category</h3>
-                <p>Select a food category that is the most representative</p>
-            `
+    if (food.emissions.length === 0){
+        let emissionDiv = document.getElementById("emission")
+
+        emissionDiv.innerHTML +=
+        `
+        <h3>This Product Hasn't Been Assigned A Category</h3>
+            <p>Select a food category that is the most representative</p>
+        `
+        
+        fetch(`${BASE_URL}/emissions`)
+        .then(resp => resp.json())
+        .then(emissions => {
+            let p = document.createElement("p")
+            let select = document.createElement("select")
+            p.append(select)
+
+            select.setAttribute("class", "custom-select")
+            select.setAttribute("id", "data-select")
+
+            let foodCategories = []
+
+            for (const food of emissions){
+                foodCategories.push([food.food_category, food.id])
+            }
             
-            fetch(`${BASE_URL}/emissions`)
-            .then(resp => resp.json())
-            .then(emissions => {
-                let p = document.createElement("p")
-                let select = document.createElement("select")
-                p.append(select)
-
-                select.setAttribute("class", "custom-select")
-                select.setAttribute("id", "data-select")
-
-                let foodCategories = []
-
-                for (const food of emissions){
-                    foodCategories.push([food.food_category, food.id])
-                }
-                
-                foodCategories.sort(function(a, b) {
-                    if (b[0] > a[0]) return -1
-                    if (b[0] < a[0]) return 1
-                    return 0
-                })
-                
-                for (const category of foodCategories){
-                    let option = document.createElement("option")
-                    option.setAttribute("value", category[1])
-                    option.innerHTML = `${category[0]}`
-                    select.append(option)
-                }
-                
-                let form = document.createElement("form")
-                let submitBtn = document.createElement("button")
-
-                submitBtn.setAttribute("value", "submit")
-                submitBtn.setAttribute("class", "btn btn-secondary")
-                submitBtn.innerHTML = "Submit"
-
-                form.addEventListener("submit", () => {
-                    event.preventDefault()
-                    let food_category = document.getElementById("data-select").value
-                    assignCategory(food.id, food_category)
-                })
-                form.append(p, submitBtn)
-
-                emissionDiv.append(form)
+            foodCategories.sort(function(a, b) {
+                if (b[0] > a[0]) return -1
+                if (b[0] < a[0]) return 1
+                return 0
             })
-        }
-        else {
+            
+            for (const category of foodCategories){
+                let option = document.createElement("option")
+                option.setAttribute("value", category[1])
+                option.innerHTML = `${category[0]}`
+                select.append(option)
+            }
+            
+            let form = document.createElement("form")
+            let submitBtn = document.createElement("button")
+
+            submitBtn.setAttribute("value", "submit")
+            submitBtn.setAttribute("class", "btn btn-secondary")
+            submitBtn.innerHTML = "Submit"
+
+            form.addEventListener("submit", () => {
+                event.preventDefault()
+                let food_category = document.getElementById("data-select").value
+                assignCategory(food.id, food_category)
+            })
+            form.append(p, submitBtn)
+
+            emissionDiv.append(form)
+        })
+    }
+    else {
             for (const emission of food.emissions){
                 let foodEmissionData = new Emission(emission.food_category, emission.land_use, 
                     emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
@@ -166,12 +175,10 @@ function fetchProduct(id){
                 foodEmissionData.renderEmission()
             }
         }
-
-    }).catch(error => {
-        document.getElementById("alert").innerHTML = error
-    })
+    
 }
 
+// Creates association between food product and emission food category 
 function assignCategory(food, foodCategory){
     let data = {
         food_id: food,
