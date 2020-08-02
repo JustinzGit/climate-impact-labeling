@@ -204,6 +204,18 @@ function fetchEmissions() {
     .then(resp => resp.json())
     .then(emissions => {
 
+        document.getElementById("selection").innerHTML += 
+        `
+        <h3>Environmental Impact of Food Products</h3>
+        <select class="custom-select" id="data-select">
+            <option value="ghg_emissions">Green House Gas Emissions</option>
+            <option value="acidifying_emissions">Acidifying Emissions</option>
+            <option value="freshwater_withdrawl">Water Withdrawl</option>
+            <option value="eutrophying_emissions">Eutrophication</option>
+            <option value="land_use">Land Usage</option>
+        </select>
+        `
+        
         document.getElementById("data-select").addEventListener("change", () => {
             renderSelection(event.target.value)
         })
