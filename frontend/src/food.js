@@ -21,13 +21,12 @@ class Food {
         `
         
         ingredientsDiv.innerHTML = `<b>Ingredients</b><p>${this.ingredients}</p>`
-    }
 
-    renderNutrition() {
         // Remove previous data
         document.getElementById("nutrients").innerHTML = ""
 
         let nutrients = {}
+
         for (const nutrient of this.nutrients){
             nutrients[nutrient["nutrient_id"]] = nutrient.amount 
         }
@@ -50,6 +49,7 @@ class Food {
             }
         }
 
+        // Insertion of nutrition label
         document.getElementById("nutrients").innerHTML += 
         `
         <section class="performance-facts">
@@ -194,4 +194,5 @@ class Food {
     `
     }
 }
+        
 
