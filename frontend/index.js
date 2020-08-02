@@ -24,8 +24,8 @@ function createBarcodeForm(){
     `
 
     barcodeForm.addEventListener("submit", () => {
-        let barcode = document.getElementById("barcode").value
-        fetchProduct(barcode)
+        event.preventDefault()
+        fetchProduct(document.getElementById("barcode").value)
     })
 }
 
@@ -47,9 +47,8 @@ function createSearchForm() {
 
 function searchProductByName(){
     event.preventDefault()
-    let name = document.getElementById("name").value
 
-    fetch(`${BASE_URL}/foods/search/${name}`)
+    fetch(`${BASE_URL}/foods/search/${document.getElementById("name").value}`)
     .then(resp => {return resp.json()})
     .then(foods => {
         removeSearchResults()
@@ -62,21 +61,12 @@ function searchProductByName(){
             resultsDiv.innerHTML += `<b><u>Search Results</b></u>`
 
             for (const food of foods){
-                let p = document.createElement("p")
-                
-                let a = document.createElement("a")
-                a.setAttribute("href", "")
-                a.setAttribute("id", food.gtin_upc)
-                a.innerHTML = `${food.name}`
-
-                p.append(a)
-                resultsDiv.appendChild(p)
-
-                a.addEventListener("click", () => {
-                    fetchProduct(event.target.id)
-                    removeSearchResults()
-                })
-                
+                resultsDiv.innerHTML += `<p><a href="" id="${food.gtin_upc}">${food.name}</a></p>`
+                document.getElementById(food.gtin_upc).addEventListener("click", () => {
+                        event.preventDefault()
+                        fetchProduct(event.target.id)
+                        removeSearchResults()
+                })  
             }
         }
     })
@@ -85,13 +75,12 @@ function searchProductByName(){
 function fetchProduct(id){
     let fetchParam
     if (id.toString().length > 6) {
-        event.preventDefault()
         fetchParam = `${BASE_URL}/foods/barcode/${id}`
     }
     else {
         fetchParam = `${BASE_URL}/foods/${id}`
     }
-
+   
     fetch(fetchParam)
     .then(resp => {
         if(!resp.ok) throw "Product Not Found"
