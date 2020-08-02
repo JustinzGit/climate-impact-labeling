@@ -9,7 +9,7 @@ class Food {
     }
 
     renderProduct() {
-        let productDiv = document.getElementById("product-data")
+        let productDiv = document.getElementById("product-info")
         let ingredientsDiv = document.getElementById("ingredients")
 
         productDiv.innerHTML += 
@@ -23,7 +23,7 @@ class Food {
         ingredientsDiv.innerHTML = `<b>Ingredients</b><p>${this.ingredients}</p>`
 
         // Remove previous data
-        document.getElementById("nutrients").innerHTML = ""
+        document.getElementById("nutrition").innerHTML = ""
 
         let nutrients = {}
 

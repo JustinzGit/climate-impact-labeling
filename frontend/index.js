@@ -95,7 +95,7 @@ function fetchProduct(id){
             food.ingredients, food.food_nutrients)
 
         // Remove previous product data
-        document.getElementById("product-data").innerHTML = ""
+        document.getElementById("product-info").innerHTML = ""
 
         foodProduct.renderProduct()
         fetchProductEmissions(food)
