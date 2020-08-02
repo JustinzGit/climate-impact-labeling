@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const BASE_URL = "http://127.0.0.1:3000"
 
+// Creats form whereby a known GTIN or UPC can be entered
 function createBarcodeForm(){
     let barcodeForm = document.getElementById("barcode-form")
 
@@ -28,6 +29,7 @@ function createBarcodeForm(){
     })
 }
 
+// Creats search form to search product by name 
 function createSearchForm() {
     let searchForm = document.getElementById("search-form")
 
@@ -40,10 +42,10 @@ function createSearchForm() {
     </form>
     `
 
-    searchForm.addEventListener("submit", searchProduct)
+    searchForm.addEventListener("submit", searchProductByName)
 }
 
-function searchProduct(){
+function searchProductByName(){
     event.preventDefault()
     let name = document.getElementById("name").value
 
