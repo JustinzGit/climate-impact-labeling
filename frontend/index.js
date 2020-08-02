@@ -118,8 +118,13 @@ function fetchProduct(barcode){
             fetch(`${BASE_URL}/emissions`)
             .then(resp => resp.json())
             .then(emissions => {
+                let p = document.createElement("p")
                 let select = document.createElement("select")
+                p.append(select)
+
                 select.setAttribute("class", "custom-select")
+                select.setAttribute("id", "data-select")
+
                 let foodCategories = []
 
                 for (const food of emissions){
@@ -131,16 +136,29 @@ function fetchProduct(barcode){
                     if (b[0] < a[0]) return 1
                     return 0
                 })
-               
+                
                 for (const category of foodCategories){
                     let option = document.createElement("option")
-                    option.setAttribute("value", category[0])
-                    option.setAttribute("id", category[1])
+                    option.setAttribute("value", category[1])
                     option.innerHTML = `${category[0]}`
                     select.append(option)
                 }
                 
-                emissionDiv.append(select)
+                let form = document.createElement("form")
+                let submitBtn = document.createElement("button")
+
+                submitBtn.setAttribute("value", "submit")
+                submitBtn.setAttribute("class", "btn btn-secondary")
+                submitBtn.innerHTML = "Submit"
+
+                form.addEventListener("submit", () => {
+                    event.preventDefault()
+                    let food_category = document.getElementById("data-select").value
+                    Food.assignCategory(food, food_category)
+                })
+                form.append(p, submitBtn)
+
+                emissionDiv.append(form)
             })
         }
         else {
