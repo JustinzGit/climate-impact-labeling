@@ -80,10 +80,17 @@ function searchProduct(){
     })
 }
 
-function fetchProduct(barcode){
-    event.preventDefault()
+function fetchProduct(id){
+    let fetchParam
+    if (id.toString().length > 6) {
+        event.preventDefault()
+        fetchParam = `${BASE_URL}/foods/barcode/${id}`
+    }
+    else {
+        fetchParam = `${BASE_URL}/foods/${id}`
+    }
 
-    fetch(`${BASE_URL}/foods/barcode/${barcode}`)
+    fetch(fetchParam)
     .then(resp => {
         if(!resp.ok) throw "Product Not Found"
         return resp.json()
@@ -107,7 +114,6 @@ function fetchProduct(barcode){
 
         if (food.emissions.length === 0){
             let emissionDiv = document.getElementById("emission")
-            emissionDiv.style.marginBottom = "100px"
 
             emissionDiv.innerHTML +=
             `
@@ -154,7 +160,7 @@ function fetchProduct(barcode){
                 form.addEventListener("submit", () => {
                     event.preventDefault()
                     let food_category = document.getElementById("data-select").value
-                    Food.assignCategory(food.id, food_category)
+                    assignCategory(food.id, food_category)
                 })
                 form.append(p, submitBtn)
 
@@ -172,6 +178,26 @@ function fetchProduct(barcode){
 
     }).catch(error => {
         document.getElementById("alert").innerHTML = error
+    })
+}
+
+function assignCategory(food, foodCategory){
+    let data = {
+        food_id: food,
+        emission_id: foodCategory
+    }
+
+    fetch(`${BASE_URL}/food_emissions`, {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify(data)
+    })
+    .then(resp => resp.json())
+    .then(food => {
+        fetchProduct(food.food_id)
     })
 }
 
