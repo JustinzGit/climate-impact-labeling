@@ -14,7 +14,7 @@ class Food {
 
         productDiv.innerHTML += 
         `
-        <h2><u>Product Details</u></h2>
+        <h2>Product Details</h2>
             <br>
             <h4>${this.name}</h4>
             <p><b>Brand Owner:</b> ${this.owner}</p>
@@ -23,7 +23,7 @@ class Food {
         ingredientsDiv.innerHTML = `<b>Ingredients</b><p>${this.ingredients}</p>`
     }
 
-    renderNutrients() {
+    renderNutrition() {
         // Remove previous data
         document.getElementById("nutrients").innerHTML = ""
 
