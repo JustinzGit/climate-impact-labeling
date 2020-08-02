@@ -103,12 +103,53 @@ function fetchProduct(barcode){
         // Remove previous product emission data 
         document.getElementById("emission").innerHTML = ""
         document.getElementById("product-emissions-chart").innerHTML = ""
+        document.getElementById("product-emissions-chart",).style.display = "none"
 
-        for (const emission of food.emissions){
-            let foodEmissionData = new Emission(emission.food_category, emission.land_use, 
-                emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
-                emission.freshwater_withdrawl)
-            foodEmissionData.renderEmission()
+        if (food.emissions.length === 0){
+            let emissionDiv = document.getElementById("emission")
+            emissionDiv.style.marginBottom = "100px"
+
+            emissionDiv.innerHTML +=
+            `
+            <h3>This Product Hasn't Been Assigned A Category</h3>
+                <p>Select a food category that is the most representative</p>
+            `
+            
+            fetch(`${BASE_URL}/emissions`)
+            .then(resp => resp.json())
+            .then(emissions => {
+                let select = document.createElement("select")
+                select.setAttribute("class", "custom-select")
+                let foodCategories = []
+
+                for (const food of emissions){
+                    foodCategories.push([food.food_category, food.id])
+                }
+                
+                foodCategories.sort(function(a, b) {
+                    if (b[0] > a[0]) return -1
+                    if (b[0] < a[0]) return 1
+                    return 0
+                })
+               
+                for (const category of foodCategories){
+                    let option = document.createElement("option")
+                    option.setAttribute("value", category[0])
+                    option.setAttribute("id", category[1])
+                    option.innerHTML = `${category[0]}`
+                    select.append(option)
+                }
+                
+                emissionDiv.append(select)
+            })
+        }
+        else {
+            for (const emission of food.emissions){
+                let foodEmissionData = new Emission(emission.food_category, emission.land_use, 
+                    emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
+                    emission.freshwater_withdrawl)
+                foodEmissionData.renderEmission()
+            }
         }
 
     }).catch(error => {
