@@ -50,7 +50,7 @@ class Food {
         }
 
         // Insertion of nutrition label
-        document.getElementById("nutrients").innerHTML += 
+        document.getElementById("nutrition").innerHTML += 
         `
         <section class="performance-facts">
         <header class="performance-facts__header">
