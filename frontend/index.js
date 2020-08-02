@@ -63,16 +63,16 @@ function searchProduct(){
             for (const food of foods){
                 let p = document.createElement("p")
                 
-                let div = document.createElement("div")
-                div.setAttribute("id", food.gtin_upc)
-                div.setAttribute("style", "color: blue;")
-                div.innerHTML = `<u>${food.name}</u>`
+                let a = document.createElement("a")
+                a.setAttribute("href", "")
+                a.setAttribute("id", food.gtin_upc)
+                a.innerHTML = `${food.name}`
 
-                p.append(div)
+                p.append(a)
                 resultsDiv.appendChild(p)
 
-                div.addEventListener("click", () => {
-                    fetchProduct(event.target.parentElement.id)
+                a.addEventListener("click", () => {
+                    fetchProduct(event.target.id)
                     removeSearchResults()
                 })
                 
