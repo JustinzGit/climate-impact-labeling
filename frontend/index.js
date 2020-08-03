@@ -62,19 +62,19 @@ function fetchProductById(id){
     })
     .then(food => {
         if(food === null) throw "Product Not Found"
-
-        let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, 
-            food.ingredients, food.food_nutrients)
-
-        // Remove previous product data
-        document.getElementById("product-info").innerHTML = ""
-
-        foodProduct.renderProduct()
-        fetchProductEmissions(food)
+        else {renderProduct(food)}
 
     }).catch(error => {
         document.getElementById("alert").innerHTML = error
     })
+}
+
+function renderProduct(food){
+    let foodObj = new Food(food.name, food.brand_owner, food.gtin_upc, 
+        food.ingredients, food.food_nutrients)
+
+    foodObj.renderProduct()
+    fetchProductEmissions(food)
 }
 
 // Fetch product emissions or assign emission category to product
