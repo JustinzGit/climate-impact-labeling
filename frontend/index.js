@@ -18,31 +18,34 @@ function fetchProductsByName(name){
             document.getElementById("alert").innerHTML = "No Products Found"
         }
         else {
-            let resultsDiv = document.getElementById("search-results")
-            resultsDiv.innerHTML += `<b><u>Search Results</b></u>`
-
-            for (const food of foods){
-                let p = document.createElement("p")
-                let a = document.createElement("a")
-
-                a.setAttribute("href", "")
-                a.setAttribute("id", food.gtin_upc)
-                a.innerHTML = `${food.name}`
-
-                p.append(a)
-                resultsDiv.appendChild(p)
-
-                a.addEventListener("click", () => {
-                    event.preventDefault()
-                    fetchProduct(event.target.id)
-                    removeSearchResults()
-                })  
-            }
+            renderProducts(foods)
         }
     })
 }
 
-// Renders product information 
+function renderProducts(foodCollection){
+    let resultsDiv = document.getElementById("search-results")
+    resultsDiv.innerHTML += `<b><u>Search Results</b></u>`
+
+    for (const food of foodCollection){
+        let p = document.createElement("p")
+        let a = document.createElement("a")
+
+        a.setAttribute("href", "")
+        a.setAttribute("id", food.gtin_upc)
+        a.innerHTML = `${food.name}`
+
+        p.append(a)
+        resultsDiv.appendChild(p)
+
+        a.addEventListener("click", () => {
+            event.preventDefault()
+            fetchProductById(event.target.id)
+            removeSearchResults()
+        })  
+    }
+}
+
 function fetchProductById(id){
     let fetchParam
     if (id.toString().length > 6) {
