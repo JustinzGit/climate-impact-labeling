@@ -74,11 +74,7 @@ function renderProduct(food){
         food.ingredients, food.food_nutrients)
 
     foodObj.renderProduct()
-    fetchProductEmissions(food)
-}
 
-
-function fetchProductEmissions(food){
     document.getElementById("product-emissions-chart").innerHTML = ""
     document.getElementById("product-emissions-chart",).style.display = "none"
 
@@ -88,7 +84,16 @@ function fetchProductEmissions(food){
     else {
         renderEmissionData(food)
     }
-    
+}
+
+
+function renderEmissionData(food){
+    for (const emission of food.emissions){
+        let emissionObj = new Emission(emission.food_category, emission.land_use, 
+            emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
+            emission.freshwater_withdrawl)
+        emissionObj.renderEmission()
+    }
 }
 
 function renderCategorySelect(food){
@@ -168,14 +173,7 @@ function assignEmissionCategory(food, emissionCategory){
     })
 }
 
-function renderEmissionData(food){
-    for (const emission of food.emissions){
-        let emissionObj = new Emission(emission.food_category, emission.land_use, 
-            emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
-            emission.freshwater_withdrawl)
-        emissionObj.renderEmission()
-    }
-}
+
 
 function fetchEmissions() {
     fetch(`${BASE_URL}/emissions`)
