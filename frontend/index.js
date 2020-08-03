@@ -70,10 +70,10 @@ function fetchProductById(id){
 }
 
 function renderProduct(food){
-    let foodObj = new Food(food.name, food.brand_owner, food.gtin_upc, 
+    let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, 
         food.ingredients, food.food_nutrients)
 
-    foodObj.renderProduct()
+    foodProduct.renderProduct()
 
     document.getElementById("product-emissions-chart").innerHTML = ""
     document.getElementById("product-emissions-chart",).style.display = "none"
@@ -172,8 +172,6 @@ function assignEmissionCategory(food, emissionCategory){
         fetchProductById(food.food_id)
     })
 }
-
-
 
 function fetchEmissions() {
     fetch(`${BASE_URL}/emissions`)
