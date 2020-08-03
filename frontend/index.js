@@ -60,11 +60,20 @@ function searchProductByName(name){
             resultsDiv.innerHTML += `<b><u>Search Results</b></u>`
 
             for (const food of foods){
-                resultsDiv.innerHTML += `<p><a href="" id="${food.gtin_upc}">${food.name}</a></p>`
-                document.getElementById(food.gtin_upc).addEventListener("click", () => {
-                        event.preventDefault()
-                        fetchProduct(event.target.id)
-                        removeSearchResults()
+                let p = document.createElement("p")
+                let a = document.createElement("a")
+
+                a.setAttribute("href", "")
+                a.setAttribute("id", food.gtin_upc)
+                a.innerHTML = `${food.name}`
+
+                p.append(a)
+                resultsDiv.appendChild(p)
+
+                a.addEventListener("click", () => {
+                    event.preventDefault()
+                    fetchProduct(event.target.id)
+                    removeSearchResults()
                 })  
             }
         }
