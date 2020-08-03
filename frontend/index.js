@@ -18,12 +18,12 @@ function fetchProductsByName(name){
             document.getElementById("alert").innerHTML = "No Products Found"
         }
         else {
-            renderProducts(foods)
+            renderProductList(foods)
         }
     })
 }
 
-function renderProducts(foodCollection){
+function renderProductList(foodCollection){
     let resultsDiv = document.getElementById("search-results")
     resultsDiv.innerHTML += `<b><u>Search Results</b></u>`
 
