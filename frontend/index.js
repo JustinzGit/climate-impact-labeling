@@ -79,67 +79,72 @@ function renderProduct(food){
 
 
 function fetchProductEmissions(food){
-    // Remove previous product emission data 
-    document.getElementById("emission").innerHTML = ""
     document.getElementById("product-emissions-chart").innerHTML = ""
     document.getElementById("product-emissions-chart",).style.display = "none"
 
     if (food.emissions.length === 0){
-        let emissionDiv = document.getElementById("emission")
-
-        emissionDiv.innerHTML +=
-        `
-        <h3>This Product Hasn't Been Assigned A Category</h3>
-            <p>Select a food category that is the most representative</p>
-        `
-        
-        fetch(`${BASE_URL}/emissions`)
-        .then(resp => resp.json())
-        .then(emissions => {
-            let p = document.createElement("p")
-            let select = document.createElement("select")
-            p.append(select)
-
-            select.setAttribute("class", "custom-select")
-            select.setAttribute("id", "data-select")
-
-            let foodCategories = []
-
-            for (const food of emissions){
-                foodCategories.push([food.food_category, food.id])
-            }
-            
-            foodCategories.sort(function(a, b) {
-                if (b[0] > a[0]) return -1
-                if (b[0] < a[0]) return 1
-                return 0
-            })
-            
-            for (const category of foodCategories){
-                let option = document.createElement("option")
-                option.setAttribute("value", category[1])
-                option.innerHTML = `${category[0]}`
-                select.append(option)
-            }
-            
-            let form = document.createElement("form")
-            let submitBtn = document.createElement("button")
-
-            submitBtn.setAttribute("value", "submit")
-            submitBtn.setAttribute("class", "btn btn-secondary")
-            submitBtn.innerHTML = "Submit"
-
-            form.addEventListener("submit", () => {
-                event.preventDefault()
-                let food_category = document.getElementById("data-select").value
-                assignCategory(food.id, food_category)
-            })
-            form.append(p, submitBtn)
-
-            emissionDiv.append(form)
-        })
+        renderCategorySelect(food)
+    }
+    else {
+        renderEmissionData(food)
     }
     
+}
+
+function renderCategorySelect(food){
+    let emissionDiv = document.getElementById("emission")
+
+    emissionDiv.innerHTML =
+    `
+    <h3>This Product Hasn't Been Assigned A Category</h3>
+        <p>Select a food category that is the most representative</p>
+    `
+    
+    fetch(`${BASE_URL}/emissions`)
+    .then(resp => resp.json())
+    .then(emissions => {
+        let p = document.createElement("p")
+        let select = document.createElement("select")
+        p.append(select)
+
+        select.setAttribute("class", "custom-select")
+        select.setAttribute("id", "data-select")
+
+        let foodCategories = []
+
+        for (const food of emissions){
+            foodCategories.push([food.food_category, food.id])
+        }
+        
+        foodCategories.sort(function(a, b) {
+            if (b[0] > a[0]) return -1
+            if (b[0] < a[0]) return 1
+            return 0
+        })
+        
+        for (const category of foodCategories){
+            let option = document.createElement("option")
+            option.setAttribute("value", category[1])
+            option.innerHTML = `${category[0]}`
+            select.append(option)
+        }
+        
+        let form = document.createElement("form")
+        let submitBtn = document.createElement("button")
+
+        submitBtn.setAttribute("value", "submit")
+        submitBtn.setAttribute("class", "btn btn-secondary")
+        submitBtn.innerHTML = "Submit"
+
+        form.addEventListener("submit", () => {
+            event.preventDefault()
+            let food_category = document.getElementById("data-select").value
+            assignCategory(food.id, food_category)
+        })
+        form.append(p, submitBtn)
+
+        emissionDiv.append(form)
+    })
 }
 
 function renderEmissionData(food){
