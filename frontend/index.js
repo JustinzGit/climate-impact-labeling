@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const BASE_URL = "http://127.0.0.1:3000"
 
-function fetchProductByName(name){
+function fetchProductsByName(name){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
@@ -278,6 +278,6 @@ function createSearchForm() {
 
     searchForm.addEventListener("submit", () => {
         event.preventDefault()
-        fetchProductByName(document.getElementById("name").value)
+        fetchProductsByName(document.getElementById("name").value)
     })
 }
