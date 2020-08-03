@@ -77,7 +77,7 @@ function renderProduct(food){
     fetchProductEmissions(food)
 }
 
-// Fetch product emissions or assign emission category to product
+
 function fetchProductEmissions(food){
     // Remove previous product emission data 
     document.getElementById("emission").innerHTML = ""
@@ -139,15 +139,16 @@ function fetchProductEmissions(food){
             emissionDiv.append(form)
         })
     }
-    else {
-            for (const emission of food.emissions){
-                let foodEmissionData = new Emission(emission.food_category, emission.land_use, 
-                    emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
-                    emission.freshwater_withdrawl)
-                foodEmissionData.renderEmission()
-            }
-        }
     
+}
+
+function renderEmissionData(food){
+    for (const emission of food.emissions){
+        let emissionObj = new Emission(emission.food_category, emission.land_use, 
+            emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
+            emission.freshwater_withdrawl)
+        emissionObj.renderEmission()
+    }
 }
 
 // Creates association between food product and emission food category 
