@@ -12,7 +12,7 @@ class Food {
         let productDiv = document.getElementById("product-info")
         let ingredientsDiv = document.getElementById("ingredients")
 
-        productDiv.innerHTML += 
+        productDiv.innerHTML = 
         `
         <h2>Product Details</h2>
             <br>
@@ -21,9 +21,6 @@ class Food {
         `
         
         ingredientsDiv.innerHTML = `<b>Ingredients</b><p>${this.ingredients}</p>`
-
-        // Remove previous data
-        document.getElementById("nutrition").innerHTML = ""
 
         let nutrients = {}
 
@@ -50,7 +47,7 @@ class Food {
         }
 
         // Insertion of nutrition label
-        document.getElementById("nutrition").innerHTML += 
+        document.getElementById("nutrition").innerHTML = 
         `
         <section class="performance-facts">
         <header class="performance-facts__header">
