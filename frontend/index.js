@@ -10,45 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const BASE_URL = "http://127.0.0.1:3000"
 
-// Creats form whereby a known GTIN or UPC can be entered
-function createBarcodeForm(){
-    let barcodeForm = document.getElementById("barcode-form")
-
-    barcodeForm.innerHTML +=
-    `
-    <form>
-        <label for="barcode">Search Product By Barcode</label><br>
-        <p><input type="text" id="barcode"></p>
-        <button type="submit" class="btn btn-secondary">Search</button>
-    </form>
-    `
-
-    barcodeForm.addEventListener("submit", () => {
-        event.preventDefault()
-        fetchProduct(document.getElementById("barcode").value)
-    })
-}
-
-// Creats search form to search product by name 
-function createSearchForm() {
-    let searchForm = document.getElementById("search-form")
-
-    searchForm.innerHTML += 
-    `
-    <form>
-        <label for="search">Search Product By Name</label><br>
-        <p><input type="text" id="name"></p>
-        <button type="submit" class="btn btn-secondary">Search</button>
-    </form>
-    `
-
-    searchForm.addEventListener("submit", () => {
-        event.preventDefault()
-        searchProductByName(document.getElementById("name").value)
-    })
-}
-
-function searchProductByName(name){
+function fetchProductByName(name){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
@@ -280,4 +242,42 @@ function addChartLabels(userSelection){
 // Remove previous search results
 function removeSearchResults(){
     document.getElementById("search-results").innerHTML = ""
+}
+
+// Creats form whereby a known GTIN or UPC can be entered
+function createBarcodeForm(){
+    let barcodeForm = document.getElementById("barcode-form")
+
+    barcodeForm.innerHTML +=
+    `
+    <form>
+        <label for="barcode">Search Product By Barcode</label><br>
+        <p><input type="text" id="barcode"></p>
+        <button type="submit" class="btn btn-secondary">Search</button>
+    </form>
+    `
+
+    barcodeForm.addEventListener("submit", () => {
+        event.preventDefault()
+        fetchProduct(document.getElementById("barcode").value)
+    })
+}
+
+// Creats search form to search product by name 
+function createSearchForm() {
+    let searchForm = document.getElementById("search-form")
+
+    searchForm.innerHTML += 
+    `
+    <form>
+        <label for="search">Search Product By Name</label><br>
+        <p><input type="text" id="name"></p>
+        <button type="submit" class="btn btn-secondary">Search</button>
+    </form>
+    `
+
+    searchForm.addEventListener("submit", () => {
+        event.preventDefault()
+        fetchProductByName(document.getElementById("name").value)
+    })
 }
