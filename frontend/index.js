@@ -89,10 +89,10 @@ function renderProduct(food){
 
 function renderEmissionData(food){
     for (const emission of food.emissions){
-        let emissionObj = new Emission(emission.food_category, emission.land_use, 
+        let productEmissions = new Emission(emission.food_category, emission.land_use, 
             emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
             emission.freshwater_withdrawl)
-        emissionObj.renderEmission()
+        productEmissions.renderEmission()
     }
 }
 
