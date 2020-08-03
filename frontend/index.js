@@ -139,7 +139,7 @@ function renderCategorySelect(food){
         form.addEventListener("submit", () => {
             event.preventDefault()
             let food_category = document.getElementById("data-select").value
-            assignCategory(food.id, food_category)
+            assignEmissionCategory(food.id, food_category)
         })
         form.append(p, submitBtn)
 
@@ -157,7 +157,7 @@ function renderEmissionData(food){
 }
 
 // Creates association between food product and emission food category 
-function assignCategory(food, foodCategory){
+function assignEmissionCategory(food, foodCategory){
     let data = {
         food_id: food,
         emission_id: foodCategory
