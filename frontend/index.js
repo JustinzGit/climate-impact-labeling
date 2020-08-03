@@ -43,7 +43,7 @@ function fetchProductByName(name){
 }
 
 // Renders product information 
-function fetchProduct(id){
+function fetchProductById(id){
     let fetchParam
     if (id.toString().length > 6) {
         fetchParam = `${BASE_URL}/foods/barcode/${id}`
@@ -164,7 +164,7 @@ function assignCategory(food, foodCategory){
     })
     .then(resp => resp.json())
     .then(food => {
-        fetchProduct(food.food_id)
+        fetchProductById(food.food_id)
     })
 }
 
@@ -259,7 +259,7 @@ function createBarcodeForm(){
 
     barcodeForm.addEventListener("submit", () => {
         event.preventDefault()
-        fetchProduct(document.getElementById("barcode").value)
+        fetchProductById(document.getElementById("barcode").value)
     })
 }
 
