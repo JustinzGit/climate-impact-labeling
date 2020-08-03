@@ -52,8 +52,6 @@ function searchProductByName(name){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
-        removeSearchResults()
-
         if (foods.length === 0){
             document.getElementById("alert").innerHTML = "No Products Found"
         }
@@ -215,7 +213,6 @@ function fetchEmissions() {
             <option value="land_use">Land Usage</option>
         </select>
         `
-        
         document.getElementById("data-select").addEventListener("change", () => {
             renderSelection(event.target.value)
         })
