@@ -138,8 +138,8 @@ function renderCategorySelect(food){
 
         form.addEventListener("submit", () => {
             event.preventDefault()
-            let food_category = document.getElementById("data-select").value
-            assignEmissionCategory(food.id, food_category)
+            let emission_category = document.getElementById("data-select").value
+            assignEmissionCategory(food.id, emission_category)
         })
         form.append(p, submitBtn)
 
@@ -147,20 +147,11 @@ function renderCategorySelect(food){
     })
 }
 
-function renderEmissionData(food){
-    for (const emission of food.emissions){
-        let emissionObj = new Emission(emission.food_category, emission.land_use, 
-            emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
-            emission.freshwater_withdrawl)
-        emissionObj.renderEmission()
-    }
-}
-
 // Creates association between food product and emission food category 
-function assignEmissionCategory(food, foodCategory){
+function assignEmissionCategory(food, emissionCategory){
     let data = {
         food_id: food,
-        emission_id: foodCategory
+        emission_id: emissionCategory
     }
 
     fetch(`${BASE_URL}/food_emissions`, {
@@ -175,6 +166,15 @@ function assignEmissionCategory(food, foodCategory){
     .then(food => {
         fetchProductById(food.food_id)
     })
+}
+
+function renderEmissionData(food){
+    for (const emission of food.emissions){
+        let emissionObj = new Emission(emission.food_category, emission.land_use, 
+            emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
+            emission.freshwater_withdrawl)
+        emissionObj.renderEmission()
+    }
 }
 
 function fetchEmissions() {
