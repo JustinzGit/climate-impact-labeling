@@ -1,6 +1,7 @@
 class Food {
-    constructor(name, owner, barcode, ingredients, nutrients)
+    constructor(id, name, owner, barcode, ingredients, nutrients)
     {
+        this.id = id
         this.name = name
         this.owner = owner
         this.barcode = barcode
