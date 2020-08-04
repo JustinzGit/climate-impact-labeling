@@ -267,6 +267,6 @@ function createSearchForm() {
 
     searchForm.addEventListener("submit", () => {
         event.preventDefault()
-        searchFoodsByName(document.getElementById("name").value)
+        searchFoodByName(document.getElementById("name").value)
     })
 }
