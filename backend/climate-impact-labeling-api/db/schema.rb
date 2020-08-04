@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_29_051056) do
+ActiveRecord::Schema.define(version: 2020_08_04_014817) do
 
-  create_table "emissions", force: :cascade do |t|
+  create_table "emission_categories", force: :cascade do |t|
     t.string "food_category"
     t.integer "land_use"
     t.integer "ghg_emissions"
