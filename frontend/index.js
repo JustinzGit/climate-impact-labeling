@@ -51,7 +51,7 @@ function fetchEmissionCategory(foodObj){
             let category = new EmissionCategory(emissionCategory.food_category, emissionCategory.land_use, 
                 emissionCategory.ghg_emissions, emissionCategory.acidifying_emissions, emissionCategory.eutrophying_emissions,
                 emissionCategory.freshwater_withdrawl)
-            category.renderEmission()
+            category.renderEmissionCategory()
         })
     }
     else {

@@ -11,7 +11,7 @@ class EmissionCategory {
         }
 
     
-    renderEmission() {
+    renderEmissionCategory() {
         let emissionDiv = document.getElementById("emission-category")
 
         let data = [{ 
