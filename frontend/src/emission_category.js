@@ -23,11 +23,11 @@ class EmissionCategory {
                 "Land Usage": this.land_use 
             },
             color: [
-                assignColor("ghg", this.ghg), 
-                assignColor("water", this.water_withdrawl),
-                assignColor("eutrophication", this.eutrophication), 
-                assignColor("acid", this.acid),
-                assignColor("land", this.land_use)
+                assignColumnColor("ghg", this.ghg), 
+                assignColumnColor("water", this.water_withdrawl),
+                assignColumnColor("eutrophication", this.eutrophication), 
+                assignColumnColor("acid", this.acid),
+                assignColumnColor("land", this.land_use)
                 ]
         }]
 
@@ -38,7 +38,7 @@ class EmissionCategory {
         document.getElementById("product-emissions-chart",).style.display = "block"
         new Chartkick.ColumnChart("product-emissions-chart", data, {legend: false})
 
-        function assignColor(data, value){
+        function assignColumnColor(data, value){
             let range
         
             switch(data){
