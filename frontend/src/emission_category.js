@@ -13,6 +13,7 @@ class EmissionCategory {
     
     renderEmissionCategoryChart() {
         let emissionDiv = document.getElementById("emission-category")
+        emissionDiv.innerHTML = `<b>${this.category}</b>`
 
         let data = [{ 
             data: {
@@ -31,9 +32,31 @@ class EmissionCategory {
                 ]
         }]
 
-        emissionDiv.innerHTML = `<b>${this.category}</b>`
-        assignRating(this.ghg)
-
+        let range = [10, 30]
+        let emissionCategoryDiv = document.getElementById("emission-category")
+    
+        if (this.ghg < range[0]){
+            emissionCategoryDiv.innerHTML =
+            `
+                <h3>Greenhouse Gas Emissions: <b style="color: #1aa260;">Low</b></h3>
+                <p>Choosing more products of this category lowers your carbon footprint!</p>
+            `
+        }
+        else if (this.ghg >= range[0] && this.ghg < range[1]){
+            emissionCategoryDiv.innerHTML =
+            `
+                <h3>Greenhouse Gas Emissions: <b style="color: #ffc107;">Moderate</b></h3>
+                <p>Choosing products of this category are smart alternatives to those with high emissions</p>
+            `
+        }
+        else if (this.ghg >= range[1]){
+            emissionCategoryDiv.innerHTML =
+            `
+                <h3>Greenhouse Gas Emissions: <b style="color: #de5246";>High</b></h3>
+                <p>Limiting your consumption of these products to once or twice a week<br>can make a huge difference on green house emssions</p>
+            `
+        }
+        
         // Reveal Chart
         document.getElementById("product-emissions-chart",).style.display = "block"
         new Chartkick.ColumnChart("product-emissions-chart", data, {legend: false})
@@ -62,33 +85,6 @@ class EmissionCategory {
             if (value < range[0]) return "#1aa260"
             else if (value >= range[0] && value < range[1]) return "#ffc107"
             else if (value >= range[1]) return "#de5246"
-        }
-
-        function assignRating(value){
-            let range = [10, 30]
-            let emissionCategoryDiv = document.getElementById("emission-category")
-        
-            if (value < range[0]){
-                emissionCategoryDiv.innerHTML =
-                `
-                  <h3>Greenhouse Gas Emissions: <b style="color: #1aa260;">Low</b></h3>
-                  <p>Choosing more products of this category lowers your carbon footprint!</p>
-                `
-            }
-            else if (value >= range[0] && value < range[1]){
-                emissionCategoryDiv.innerHTML =
-                `
-                  <h3>Greenhouse Gas Emissions: <b style="color: #ffc107;">Moderate</b></h3>
-                  <p>Choosing products of this category are smart alternatives to those with high emissions</p>
-                `
-            }
-            else if (value >= range[1]){
-                emissionCategoryDiv.innerHTML =
-                `
-                  <h3>Greenhouse Gas Emissions: <b style="color: #de5246";>High</b></h3>
-                  <p>Limiting your consumption of these products to once or twice a week<br>can make a huge difference on green house emssions</p>
-                `
-            }
         }
     }
 }
