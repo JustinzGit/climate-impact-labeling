@@ -95,8 +95,8 @@ function fetchEmissionCategory(foodObj){
     
             form.addEventListener("submit", () => {
                 event.preventDefault()
-                let emission_category = document.getElementById("data-select").value
-                assignEmissionCategory(food.id, emission_category)
+                let emissionCategoryId = document.getElementById("data-select").value
+                assignEmissionCategory(foodObj.id, emissionCategoryId)
             })
             form.append(p, submitBtn)
             emissionDiv.append(form)
