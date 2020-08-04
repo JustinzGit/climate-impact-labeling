@@ -41,7 +41,7 @@ function fetchFoodById(id){
     })
 }
 
-// Fetches emission category of food, renders to DOM
+// Fetches emission category of food, renders to DOM in chart
 function fetchEmissionCategory(foodObj){
     if (foodObj.emissionCategoryId){
         fetch(`${BASE_URL}/emission_categories/${foodObj.emissionCategoryId}`)
@@ -108,7 +108,7 @@ function fetchEmissionCategory(foodObj){
     }
 }
 
-// Renders a list of food items to be selected 
+// Renders a list of food items to be selected from
 function searchFoodByName(name){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
@@ -159,6 +159,7 @@ function assignEmissionCategory(foodId, emissionCategoryId){
     })
 }
 
+// Fetches list of all emission categories, renders into one chart
 function fetchEmissionCategories() {
     fetch(`${BASE_URL}/emission_categories`)
     .then(resp => resp.json())
@@ -166,7 +167,7 @@ function fetchEmissionCategories() {
 
         document.getElementById("selection").innerHTML += 
         `
-        <h3>Environmental Impact of Food Products</h3>
+        <h2>Environmental Impact of Food Products</h2>
         <select class="custom-select" id="data-select">
             <option value="ghg_emissions">Green House Gas Emissions</option>
             <option value="acidifying_emissions">Acidifying Emissions</option>
