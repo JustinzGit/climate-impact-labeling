@@ -29,14 +29,13 @@ function fetchFoodById(id){
         
         let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, 
             food.ingredients, food.food_nutrients)
-    
         foodProduct.renderFood()
     
-        document.getElementById("product-emissions-chart").innerHTML = ""
-        document.getElementById("product-emissions-chart",).style.display = "none"
+        // document.getElementById("product-emissions-chart").innerHTML = ""
+        // document.getElementById("product-emissions-chart",).style.display = "none"
     
-        if (food.emissions.length === 0){
-            renderCategorySelect(food)
+        if (food.emission_categories.length === 0){
+            selectEmissionCategory(food)
         }
         else {
             renderEmissionData(food)
@@ -95,7 +94,7 @@ function renderEmissionData(food){
     }
 }
 
-function renderCategorySelect(food){
+function selectEmissionCategory(food){
     let emissionDiv = document.getElementById("emission")
 
     emissionDiv.innerHTML =
