@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :emission_categories
   resources :food_nutrients
   resources :nutrients
-  resources :food_emissions
   resources :foods
 
   get 'foods/barcode/:id', to: 'foods#barcode_show'
