@@ -1,6 +1,5 @@
 class Food < ApplicationRecord
-    has_many :food_emissions
-    has_many :emission_categories, through: :food_emissions
+    belongs_to :emission_category
 
     has_many :food_nutrients
     has_many :nutrients, through: :food_nutrients
