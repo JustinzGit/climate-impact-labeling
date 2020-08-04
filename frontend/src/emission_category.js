@@ -13,11 +13,7 @@ class EmissionCategory {
     
     renderEmission() {
         let emissionDiv = document.getElementById("emission-category")
-        
-        // Remove previous category label
-        emissionDiv.innerHTML = ""
 
-        
         let data = [{ 
             data: {
                 "GHG Emissions": this.ghg,
@@ -35,10 +31,7 @@ class EmissionCategory {
                 ]
         }]
 
-        emissionDiv.innerHTML +=
-        `
-            <b>${this.category}</b>
-        `
+        emissionDiv.innerHTML = `<b>${this.category}</b>`
 
         // Reveal Chart
         document.getElementById("product-emissions-chart",).style.display = "block"
