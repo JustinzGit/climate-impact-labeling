@@ -167,7 +167,7 @@ function assignEmissionCategory(foodId, emissionCategoryId){
 }
 
 function fetchEmissions() {
-    fetch(`${BASE_URL}/emissions`)
+    fetch(`${BASE_URL}/emission_categories`)
     .then(resp => resp.json())
     .then(emissions => {
 
