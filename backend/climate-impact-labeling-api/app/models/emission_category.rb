@@ -1,3 +1,3 @@
 class EmissionCategory < ApplicationRecord
-    belongs_to :food
+    has_many :foods
 end
