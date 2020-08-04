@@ -32,6 +32,7 @@ class EmissionCategory {
         }]
 
         emissionDiv.innerHTML = `<b>${this.category}</b>`
+        assignRating(this.ghg)
 
         // Reveal Chart
         document.getElementById("product-emissions-chart",).style.display = "block"
@@ -41,7 +42,6 @@ class EmissionCategory {
 
 function assignColor(data, value){
     let range
-    let emissionCategoryDiv = document.getElementById("emission-category")
 
     switch(data){
         case "ghg":
@@ -61,32 +61,34 @@ function assignColor(data, value){
             break
     }
 
-    if (data === "ghg" && value < range[0]){
+    if (value < range[0]) return "#1aa260"
+    else if (value >= range[0] && value < range[1]) return "#ffc107"
+    else if (value >= range[1]) return "#de5246"
+}
+
+function assignRating(value){
+    let range = [10, 30]
+    let emissionCategoryDiv = document.getElementById("emission-category")
+
+    if (value < range[0]){
         emissionCategoryDiv.innerHTML =
         `
           <h3>Greenhouse Gas Emissions: <b style="color: #1aa260;">Low</b></h3>
           <p>Choosing more products of this category lowers your carbon footprint!</p>
         `
-        return "#1aa260"
     }
-    else if (data === "ghg" && value >= range[0] && value < range[1]){
+    else if (value >= range[0] && value < range[1]){
         emissionCategoryDiv.innerHTML =
         `
           <h3>Greenhouse Gas Emissions: <b style="color: #ffc107;">Moderate</b></h3>
           <p>Choosing products of this category are smart alternatives to those with high emissions</p>
         `
-        return "#ffc107"
     }
-    else if (data === "ghg" && value >= range[1]){
+    else if (value >= range[1]){
         emissionCategoryDiv.innerHTML =
         `
           <h3>Greenhouse Gas Emissions: <b style="color: #de5246";>High</b></h3>
           <p>Limiting your consumption of these products to once or twice a week<br>can make a huge difference on green house emssions</p>
         `
-        return "#de5246"
     }
-
-    else if (value < range[0]) return "#1aa260"
-    else if (value >= range[0] && value < range[1]) return "#ffc107"
-    else if (value >= range[1]) return "#de5246"
 }
