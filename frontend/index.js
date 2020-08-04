@@ -43,11 +43,14 @@ function fetchFoodById(id){
 
 function fetchEmissionCategory(foodObj){
     if (foodObj.emissionCategory){
-        let emission = foodObj.emissionCategory
-        let productEmissions = new Emission(emission.food_category, emission.land_use, 
-            emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
-            emission.freshwater_withdrawl)
-        productEmissions.renderEmission()
+        fetch(`${BASE_URL}/emission_categories/${foodObj.emissionCategory}`)
+        .then(resp => resp.json())
+        .then(emissionCategory => {
+            let category = new Emission(emissionCategory.food_category, emissionCategory.land_use, 
+                emissionCategory.ghg_emissions, emissionCategory.acidifying_emissions, emissionCategory.eutrophying_emissions,
+                emissionCategory.freshwater_withdrawl)
+            category.renderEmission()
+        })
     }
     else {
         let emissionDiv = document.getElementById("emission-category")
