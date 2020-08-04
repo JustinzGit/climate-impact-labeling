@@ -50,7 +50,7 @@ function fetchEmissionCategory(foodObj){
             let category = new EmissionCategory(emissionCategory.food_category, emissionCategory.land_use, 
                 emissionCategory.ghg_emissions, emissionCategory.acidifying_emissions, emissionCategory.eutrophying_emissions,
                 emissionCategory.freshwater_withdrawl)
-            category.renderEmissionCategory()
+            category.renderEmissionCategoryChart()
         })
     }
     else {
@@ -196,6 +196,7 @@ function fetchEmissionCategories() {
     })
 }
 
+// Add appropriate chart labels based on users selection
 function addChartLabels(userSelection){
     let xAxis  = document.getElementById("x-axis")
     let chartTitle = document.getElementById("chart-title")
@@ -228,7 +229,7 @@ function addChartLabels(userSelection){
     }
 }
 
-// Creats form whereby a known GTIN or UPC can be entered
+// Creates form whereby a known GTIN or UPC can be entered
 function createBarcodeForm(){
     let barcodeForm = document.getElementById("barcode-form")
 
