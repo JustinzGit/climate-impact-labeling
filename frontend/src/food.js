@@ -9,6 +9,15 @@ class Food {
         this.nutrients = nutrients
         this.emissionCategoryId = emissionCategoryId
     }
+    
+    static returnNutrients(nutrients){
+        // Create object that contains nutrients of food instance
+        let nutrientsObj = {}
+        for (const nutrient of nutrients){
+            nutrientsObj[nutrient["nutrient_id"]] = nutrient.amount 
+        }
+        return nutrientsObj
+    }
 
     renderFood() {
         document.getElementById("product-info").innerHTML = 
@@ -42,13 +51,8 @@ class Food {
             }
         }
 
-
-        // Create object that contains nutrients of food instance
-        let nutrients = {}
-        for (const nutrient of this.nutrients){
-            nutrients[nutrient["nutrient_id"]] = nutrient.amount 
-        }
-
+        let nutrients = Food.returnNutrients(this.nutrients)
+        
         // Insertion of nutrition label
         document.getElementById("nutrition").innerHTML = 
         `
