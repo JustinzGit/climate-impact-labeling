@@ -26,7 +26,7 @@ function fetchFoodById(id){
     })
     .then(food => {
         if(food === null) throw "Product Not Found"
-        console.log(food)
+        
         let foodProduct = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
             food.ingredients, food.food_nutrients, food.emission_category_id)
 
@@ -42,8 +42,8 @@ function fetchFoodById(id){
 }
 
 function fetchEmissionCategory(foodObj){
-    if (foodObj.emissionCategory){
-        fetch(`${BASE_URL}/emission_categories/${foodObj.emissionCategory}`)
+    if (foodObj.emissionCategoryId){
+        fetch(`${BASE_URL}/emission_categories/${foodObj.emissionCategoryId}`)
         .then(resp => resp.json())
         .then(emissionCategory => {
             let category = new Emission(emissionCategory.food_category, emissionCategory.land_use, 

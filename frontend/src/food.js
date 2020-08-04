@@ -1,5 +1,5 @@
 class Food {
-    constructor(id, name, owner, barcode, ingredients, nutrients, emissionCategory)
+    constructor(id, name, owner, barcode, ingredients, nutrients, emissionCategoryId)
     {
         this.id = id
         this.name = name
@@ -7,7 +7,7 @@ class Food {
         this.barcode = barcode
         this.ingredients = ingredients
         this.nutrients = nutrients
-        this.emissionCategory = emissionCategory
+        this.emissionCategoryId = emissionCategoryId
     }
 
     renderFood() {
