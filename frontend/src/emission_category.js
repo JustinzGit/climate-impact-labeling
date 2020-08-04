@@ -1,4 +1,4 @@
-class Emission {
+class EmissionCategory {
     constructor(category, land_use, ghg, acid, 
         eutrophication, water_withdrawl) 
         {

@@ -46,7 +46,7 @@ function fetchEmissionCategory(foodObj){
         fetch(`${BASE_URL}/emission_categories/${foodObj.emissionCategoryId}`)
         .then(resp => resp.json())
         .then(emissionCategory => {
-            let category = new Emission(emissionCategory.food_category, emissionCategory.land_use, 
+            let category = new EmissionCategory(emissionCategory.food_category, emissionCategory.land_use, 
                 emissionCategory.ghg_emissions, emissionCategory.acidifying_emissions, emissionCategory.eutrophying_emissions,
                 emissionCategory.freshwater_withdrawl)
             category.renderEmission()
@@ -139,7 +139,7 @@ function searchFoodByName(name){
     })
 }
 
-// Creates association between food product and emission category 
+// Assings Emission Cateogry to Food 
 function assignEmissionCategory(foodId, emissionCategoryId){
     fetch(`${BASE_URL}/foods/${foodId}`, {
         method: "PATCH",
