@@ -10,6 +10,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const BASE_URL = "http://127.0.0.1:3000"
 
+function fetchFoodById(id){
+    let fetchParam
+    if (id.toString().length > 6) {
+        fetchParam = `${BASE_URL}/foods/barcode/${id}`
+    }
+    else {
+        fetchParam = `${BASE_URL}/foods/${id}`
+    }
+   
+    fetch(fetchParam)
+    .then(resp => {
+        if(!resp.ok) throw "Product Not Found"
+        return resp.json()
+    })
+    .then(food => {
+        if(food === null) throw "Product Not Found"
+        
+        let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, 
+            food.ingredients, food.food_nutrients)
+    
+        foodProduct.renderProduct()
+    
+        document.getElementById("product-emissions-chart").innerHTML = ""
+        document.getElementById("product-emissions-chart",).style.display = "none"
+    
+        if (food.emissions.length === 0){
+            renderCategorySelect(food)
+        }
+        else {
+            renderEmissionData(food)
+        }
+
+    }).catch(error => {
+        document.getElementById("alert").innerHTML = error
+    })
+}
+
+
 function fetchProductsByName(name){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
@@ -40,51 +78,12 @@ function renderProductList(foodCollection){
 
         a.addEventListener("click", () => {
             event.preventDefault()
-            fetchProductById(event.target.id)
+            fetchFoodById(event.target.id)
             removeSearchResults()
         })  
     }
 }
 
-function fetchProductById(id){
-    let fetchParam
-    if (id.toString().length > 6) {
-        fetchParam = `${BASE_URL}/foods/barcode/${id}`
-    }
-    else {
-        fetchParam = `${BASE_URL}/foods/${id}`
-    }
-   
-    fetch(fetchParam)
-    .then(resp => {
-        if(!resp.ok) throw "Product Not Found"
-        return resp.json()
-    })
-    .then(food => {
-        if(food === null) throw "Product Not Found"
-        else {renderProduct(food)}
-
-    }).catch(error => {
-        document.getElementById("alert").innerHTML = error
-    })
-}
-
-function renderProduct(food){
-    let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, 
-        food.ingredients, food.food_nutrients)
-
-    foodProduct.renderProduct()
-
-    document.getElementById("product-emissions-chart").innerHTML = ""
-    document.getElementById("product-emissions-chart",).style.display = "none"
-
-    if (food.emissions.length === 0){
-        renderCategorySelect(food)
-    }
-    else {
-        renderEmissionData(food)
-    }
-}
 
 
 function renderEmissionData(food){
@@ -152,7 +151,7 @@ function renderCategorySelect(food){
     })
 }
 
-// Creates association between food product and emission food category 
+// Creates association between food product and emission category 
 function assignEmissionCategory(food, emissionCategory){
     let data = {
         food_id: food,
@@ -169,7 +168,7 @@ function assignEmissionCategory(food, emissionCategory){
     })
     .then(resp => resp.json())
     .then(food => {
-        fetchProductById(food.food_id)
+        fetchFoodById(food.food_id)
     })
 }
 
@@ -264,7 +263,7 @@ function createBarcodeForm(){
 
     barcodeForm.addEventListener("submit", () => {
         event.preventDefault()
-        fetchProductById(document.getElementById("barcode").value)
+        fetchFoodById(document.getElementById("barcode").value)
     })
 }
 
