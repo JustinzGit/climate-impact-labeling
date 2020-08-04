@@ -163,7 +163,7 @@ function assignEmissionCategory(foodId, emissionCategoryId){
 function fetchEmissionCategories() {
     fetch(`${BASE_URL}/emission_categories`)
     .then(resp => resp.json())
-    .then(emissions => {
+    .then(emission_categories => {
 
         document.getElementById("selection").innerHTML += 
         `
@@ -177,12 +177,12 @@ function fetchEmissionCategories() {
         </select>
         `
         document.getElementById("data-select").addEventListener("change", () => {
-            renderSelection(event.target.value)
+            renderCategorySelection(event.target.value)
         })
 
-        function renderSelection(userSelection = "ghg_emissions"){
+        function renderCategorySelection(userSelection = "ghg_emissions"){
             let data = []
-            for (const entry of emissions){
+            for (const entry of emission_categories){
                 if (entry[userSelection] > 0){
                     data.push([entry.food_category, entry[userSelection]])
                 }
@@ -193,7 +193,7 @@ function fetchEmissionCategories() {
             new Chartkick.BarChart("emissions-chart", data, {legend: false})
         }
 
-        renderSelection();
+        renderCategorySelection();
     })
 }
 
