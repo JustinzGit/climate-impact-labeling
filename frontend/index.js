@@ -138,17 +138,6 @@ function searchFoodByName(name){
 
 // Creates association between food product and emission category 
 function assignEmissionCategory(foodId, emissionCategoryId){
-    fetch(`${BASE_URL}/emission_categories/${emissionCategoryId}`, {
-        method: "PATCH",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-        body: JSON.stringify({
-            food_id: foodId
-        })
-    })
-
     fetch(`${BASE_URL}/foods/${foodId}`, {
         method: "PATCH",
         headers: {
@@ -161,7 +150,7 @@ function assignEmissionCategory(foodId, emissionCategoryId){
     })
     .then(resp => resp.json())
     .then(food => {
-        fetchFoodById(food.food_id)
+        fetchFoodById(food.id)
     })
 }
 
