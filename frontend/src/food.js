@@ -11,24 +11,18 @@ class Food {
     }
 
     renderFood() {
-        let productDiv = document.getElementById("product-info")
-        let ingredientsDiv = document.getElementById("ingredients")
-
-        productDiv.innerHTML = 
+        document.getElementById("product-info").innerHTML = 
         `
         <h2>Product Details</h2>
             <br>
             <h4>${this.name}</h4>
             <p><b>Brand Owner:</b> ${this.owner}</p>
         `
-        
-        ingredientsDiv.innerHTML = `<b>Ingredients</b><p>${this.ingredients}</p>`
 
-        let nutrients = {}
-        for (const nutrient of this.nutrients){
-            nutrients[nutrient["nutrient_id"]] = nutrient.amount 
-        }
+        document.getElementById("ingredients").innerHTML = 
+        `<b>Ingredients</b><p>${this.ingredients}</p>`
 
+        // Formats data properly for nutrition label
         function formatData(nutrient){
             if (nutrient === undefined){
                 return `<b style="color: red;">(N/A)</b>`
@@ -38,6 +32,7 @@ class Food {
             }
         }
 
+        // Calculates fat calories for nutrition label
         function calculateFatCalories(fat_amount){
             if (fat_amount === undefined){
                 return `<b style="color: red;">(N/A)</b>`
@@ -45,6 +40,13 @@ class Food {
             else {
                 return fat_amount * 9
             }
+        }
+
+
+        // Create object that contains nutrients of food instance
+        let nutrients = {}
+        for (const nutrient of this.nutrients){
+            nutrients[nutrient["nutrient_id"]] = nutrient.amount 
         }
 
         // Insertion of nutrition label
