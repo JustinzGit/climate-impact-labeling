@@ -42,7 +42,14 @@ function fetchFoodById(id){
 }
 
 function fetchEmissionCategory(foodObj){
-    if (foodObj.emissionCategory === nil){
+    if (foodObj.emissionCategory){
+        let emission = foodObj.emissionCategory
+        let productEmissions = new Emission(emission.food_category, emission.land_use, 
+            emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
+            emission.freshwater_withdrawl)
+        productEmissions.renderEmission()
+    }
+    else {
         let emissionDiv = document.getElementById("emission-category")
 
         emissionDiv.innerHTML =
@@ -94,13 +101,6 @@ function fetchEmissionCategory(foodObj){
             form.append(p, submitBtn)
             emissionDiv.append(form)
         })
-    }
-    else {
-        let emission = foodObj.emissionCategory
-        let productEmissions = new Emission(emission.food_category, emission.land_use, 
-            emission.ghg_emissions, emission.acidifying_emissions, emission.eutrophying_emissions,
-            emission.freshwater_withdrawl)
-        productEmissions.renderEmission()
     }
 }
 
