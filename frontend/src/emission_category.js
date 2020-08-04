@@ -37,34 +37,35 @@ class EmissionCategory {
         // Reveal Chart
         document.getElementById("product-emissions-chart",).style.display = "block"
         new Chartkick.ColumnChart("product-emissions-chart", data, {legend: false})
+
+        function assignColor(data, value){
+            let range
+        
+            switch(data){
+                case "ghg":
+                    range = [10, 30]
+                    break
+                case "water":
+                    range = [40, 900]
+                    break
+                case "eutrophication":
+                    range = [10, 70]
+                    break
+                case "acid":
+                    range = [15, 90]
+                    break
+                case "land":
+                    range = [21, 60]
+                    break
+            }
+        
+            if (value < range[0]) return "#1aa260"
+            else if (value >= range[0] && value < range[1]) return "#ffc107"
+            else if (value >= range[1]) return "#de5246"
+        }
     }
 }
 
-function assignColor(data, value){
-    let range
-
-    switch(data){
-        case "ghg":
-            range = [10, 30]
-            break
-        case "water":
-            range = [40, 900]
-            break
-        case "eutrophication":
-            range = [10, 70]
-            break
-        case "acid":
-            range = [15, 90]
-            break
-        case "land":
-            range = [21, 60]
-            break
-    }
-
-    if (value < range[0]) return "#1aa260"
-    else if (value >= range[0] && value < range[1]) return "#ffc107"
-    else if (value >= range[1]) return "#de5246"
-}
 
 function assignRating(value){
     let range = [10, 30]
