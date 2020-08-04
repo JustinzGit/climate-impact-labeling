@@ -34,8 +34,7 @@ function fetchFoodById(id){
         foodProduct.renderFood()
         fetchEmissionCategory(foodProduct)
         
-        // document.getElementById("product-emissions-chart").innerHTML = ""
-        // document.getElementById("product-emissions-chart",).style.display = "none"
+        document.getElementById("product-emissions-chart",).style.display = "none"
     
     }).catch(error => {
         document.getElementById("alert").innerHTML = error
