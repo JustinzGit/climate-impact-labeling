@@ -30,7 +30,7 @@ function fetchFoodById(id){
         let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, 
             food.ingredients, food.food_nutrients)
     
-        foodProduct.renderProduct()
+        foodProduct.renderFood()
     
         document.getElementById("product-emissions-chart").innerHTML = ""
         document.getElementById("product-emissions-chart",).style.display = "none"
