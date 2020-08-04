@@ -8,7 +8,7 @@ class Food {
         this.nutrients = nutrients
     }
 
-    renderProduct() {
+    renderFood() {
         let productDiv = document.getElementById("product-info")
         let ingredientsDiv = document.getElementById("ingredients")
 
@@ -23,7 +23,6 @@ class Food {
         ingredientsDiv.innerHTML = `<b>Ingredients</b><p>${this.ingredients}</p>`
 
         let nutrients = {}
-
         for (const nutrient of this.nutrients){
             nutrients[nutrient["nutrient_id"]] = nutrient.amount 
         }
