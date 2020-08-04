@@ -28,10 +28,6 @@ form {
     width: 240px;
 }
 
-#selection {
-    margin-top: 25px;
-}
-
 #emissions-chart {
     
     height: 700px; 
@@ -60,6 +56,7 @@ form {
   height: 350px;
   width: 500px;
   margin: auto;
+  margin-bottom: 50px;
 }
 
 .performance-facts {
