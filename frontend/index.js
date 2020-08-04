@@ -134,14 +134,14 @@ function searchFoodByName(name){
                 a.addEventListener("click", () => {
                     event.preventDefault()
                     fetchFoodById(event.target.id)
-                    removeSearchResults()
+                    resultsDiv = ""
                 })  
             }
         }
     })
 }
 
-// Assings Emission Cateogry to Food 
+// Assigns emission cateogry to food 
 function assignEmissionCategory(foodId, emissionCategoryId){
     fetch(`${BASE_URL}/foods/${foodId}`, {
         method: "PATCH",
@@ -226,11 +226,6 @@ function addChartLabels(userSelection){
             xAxis.innerHTML = `m<sup>2</sup> per kg/L Food Product`
             break
     }
-}
-
-// Remove previous search results
-function removeSearchResults(){
-    document.getElementById("search-results").innerHTML = ""
 }
 
 // Creats form whereby a known GTIN or UPC can be entered
