@@ -43,7 +43,7 @@ function fetchFoodById(id){
 
 function fetchEmissionCategory(foodObj){
     if (foodObj.emissionCategory === nil){
-        let emissionDiv = document.getElementById("emission-categories")
+        let emissionDiv = document.getElementById("emission-category")
 
         emissionDiv.innerHTML =
         `
