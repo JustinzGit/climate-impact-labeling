@@ -138,7 +138,7 @@ function searchFoodByName(name){
 
 // Creates association between food product and emission category 
 function assignEmissionCategory(foodId, emissionCategoryId){
-    fetch(`${BASE_URL}/emission_category/${emissionCategoryId}`, {
+    fetch(`${BASE_URL}/emission_categories/${emissionCategoryId}`, {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
