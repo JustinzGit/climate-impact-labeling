@@ -12,7 +12,7 @@ class Emission {
 
     
     renderEmission() {
-        let emissionDiv = document.getElementById("emission")
+        let emissionDiv = document.getElementById("emission-category")
         
         // Remove previous category label
         emissionDiv.innerHTML = ""
@@ -67,7 +67,7 @@ function assignColor(data, value){
     }
 
     if (data === "ghg" && value < range[0]){
-        document.getElementById("emission").innerHTML +=
+        document.getElementById("emission-category").innerHTML +=
         `
           <h3>Greenhouse Gas Emissions: <b style="color: #1aa260;">Low</b></h3>
           <p>Choosing more products of this category lowers your carbon footprint!</p>
@@ -75,7 +75,7 @@ function assignColor(data, value){
         return "#1aa260"
     }
     else if (data === "ghg" && value >= range[0] && value < range[1]){
-        document.getElementById("emission").innerHTML +=
+        document.getElementById("emission-category").innerHTML +=
         `
           <h3>Greenhouse Gas Emissions: <b style="color: #ffc107;">Moderate</b></h3>
           <p>Choosing products of this category are smart alternatives to those with high emissions</p>
@@ -83,7 +83,7 @@ function assignColor(data, value){
         return "#ffc107"
     }
     else if (data === "ghg" && value >= range[1]){
-        document.getElementById("emission").innerHTML +=
+        document.getElementById("emission-category").innerHTML +=
         `
           <h3>Greenhouse Gas Emissions: <b style="color: #de5246";>High</b></h3>
           <p>Limiting your consumption of these products to once or twice a week<br>can make a huge difference on green house emssions</p>
