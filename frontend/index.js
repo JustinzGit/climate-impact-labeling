@@ -104,7 +104,7 @@ function fetchEmissionCategory(foodObj){
     }
 }
 
-function fetchProductsByName(name){
+function searchFoodByName(name){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
     .then(foods => {
@@ -112,32 +112,28 @@ function fetchProductsByName(name){
             document.getElementById("alert").innerHTML = "No Products Found"
         }
         else {
-            renderProductList(foods)
+            let resultsDiv = document.getElementById("search-results")
+            resultsDiv.innerHTML += `<b><u>Search Results</b></u>`
+        
+            for (const food of foods){
+                let p = document.createElement("p")
+                let a = document.createElement("a")
+        
+                a.setAttribute("href", "")
+                a.setAttribute("id", food.gtin_upc)
+                a.innerHTML = `${food.name}`
+        
+                p.append(a)
+                resultsDiv.appendChild(p)
+        
+                a.addEventListener("click", () => {
+                    event.preventDefault()
+                    fetchFoodById(event.target.id)
+                    removeSearchResults()
+                })  
+            }
         }
     })
-}
-
-function renderProductList(foodCollection){
-    let resultsDiv = document.getElementById("search-results")
-    resultsDiv.innerHTML += `<b><u>Search Results</b></u>`
-
-    for (const food of foodCollection){
-        let p = document.createElement("p")
-        let a = document.createElement("a")
-
-        a.setAttribute("href", "")
-        a.setAttribute("id", food.gtin_upc)
-        a.innerHTML = `${food.name}`
-
-        p.append(a)
-        resultsDiv.appendChild(p)
-
-        a.addEventListener("click", () => {
-            event.preventDefault()
-            fetchFoodById(event.target.id)
-            removeSearchResults()
-        })  
-    }
 }
 
 // Creates association between food product and emission category 
@@ -271,6 +267,6 @@ function createSearchForm() {
 
     searchForm.addEventListener("submit", () => {
         event.preventDefault()
-        fetchProductsByName(document.getElementById("name").value)
+        searchFoodsByName(document.getElementById("name").value)
     })
 }
