@@ -5,11 +5,12 @@ Chartkick.use(Chart)
 document.addEventListener("DOMContentLoaded", () => {
     createBarcodeForm()
     createSearchForm()
-    fetchEmissions()
+    fetchEmissionCategories()
 })
 
 const BASE_URL = "http://127.0.0.1:3000"
 
+// Fetches food, renders to DOM
 function fetchFoodById(id){
     let fetchParam
     if (id.toString().length > 6) {
@@ -41,6 +42,7 @@ function fetchFoodById(id){
     })
 }
 
+// Fetches emission category of food, renders to DOM
 function fetchEmissionCategory(foodObj){
     if (foodObj.emissionCategoryId){
         fetch(`${BASE_URL}/emission_categories/${foodObj.emissionCategoryId}`)
@@ -107,6 +109,7 @@ function fetchEmissionCategory(foodObj){
     }
 }
 
+// Renders a list of food items to be selected 
 function searchFoodByName(name){
     fetch(`${BASE_URL}/foods/search/${name}`)
     .then(resp => {return resp.json()})
@@ -157,7 +160,7 @@ function assignEmissionCategory(foodId, emissionCategoryId){
     })
 }
 
-function fetchEmissions() {
+function fetchEmissionCategories() {
     fetch(`${BASE_URL}/emission_categories`)
     .then(resp => resp.json())
     .then(emissions => {
