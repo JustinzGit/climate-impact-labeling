@@ -27,7 +27,7 @@ function fetchFoodById(id){
     .then(food => {
         if(food === null) throw "Product Not Found"
         
-        let foodProduct = new Food(food.name, food.brand_owner, food.gtin_upc, 
+        let foodProduct = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
             food.ingredients, food.food_nutrients)
 
         foodProduct.renderFood()
@@ -92,7 +92,7 @@ function fetchEmissionCategory(foodObj){
             submitBtn.setAttribute("value", "submit")
             submitBtn.setAttribute("class", "btn btn-secondary")
             submitBtn.innerHTML = "Submit"
-    
+           
             form.addEventListener("submit", () => {
                 event.preventDefault()
                 let emissionCategoryId = document.getElementById("data-select").value
@@ -138,7 +138,6 @@ function searchFoodByName(name){
 
 // Creates association between food product and emission category 
 function assignEmissionCategory(foodId, emissionCategoryId){
-    
     fetch(`${BASE_URL}/emission_category/${emissionCategoryId}`, {
         method: "PATCH",
         headers: {
