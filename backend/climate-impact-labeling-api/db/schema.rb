@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_024427) do
+ActiveRecord::Schema.define(version: 2020_08_05_194101) do
 
   create_table "emission_categories", force: :cascade do |t|
     t.string "food_category"
@@ -22,14 +22,6 @@ ActiveRecord::Schema.define(version: 2020_08_04_024427) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "food_id"
-  end
-
-  create_table "food_nutrients", force: :cascade do |t|
-    t.integer "nutrient_id"
-    t.integer "food_id"
-    t.integer "amount"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "foods", force: :cascade do |t|
@@ -48,11 +40,23 @@ ActiveRecord::Schema.define(version: 2020_08_04_024427) do
   end
 
   create_table "nutrients", force: :cascade do |t|
-    t.integer "nutrient_id"
-    t.string "name"
-    t.string "unit_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "food_id"
+    t.integer "calories"
+    t.integer "total_fat"
+    t.integer "saturated_fat"
+    t.integer "trans_fat"
+    t.integer "cholesterol"
+    t.integer "sodium"
+    t.integer "carbohydrate"
+    t.integer "fiber"
+    t.integer "sugars"
+    t.integer "protein"
+    t.integer "vitamin_a"
+    t.integer "vitamin_c"
+    t.integer "calcium"
+    t.integer "iron"
   end
 
 end
