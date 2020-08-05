@@ -1,2 +1,0 @@
-class Nutrition < ApplicationRecord
-end
