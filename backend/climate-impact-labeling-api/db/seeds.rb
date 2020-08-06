@@ -20,7 +20,10 @@ Dir.each_child("./usda_files") do |file|
 
     # Obtain constant value
     model = Object.const_get(model_name)
+    puts("#{model} IMPORTING")
 
     # Import data into rails model 
     model.import columns, data
+    puts("#{model} IMPORT COMPLETE")
+    puts
 end 
