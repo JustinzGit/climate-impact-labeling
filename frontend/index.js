@@ -27,9 +27,12 @@ function fetchFoodById(id){
     })
     .then(food => {
         if(food === null) throw "Product Not Found"
-        console.log(food)
+    
         let foodItem = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
-            food.ingredients, food.food_nutrients, food.emission_category_id)
+            food.ingredients, food.serving_size, food.calcium, food.calories, 
+            food.carbohydrates, food.cholesteroal, food.fiber, food.iron, 
+            food.protein, food.saturated_fat, food.sodium, food.sugars, 
+            food.total_fat, food.trans_fat, food.vitamin_a, food.vitamin_c)
 
         foodItem.renderFood()
         fetchEmissionCategory(foodItem)

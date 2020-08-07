@@ -1,13 +1,28 @@
 class Food {
-    constructor(id, name, owner, barcode, ingredients, nutrients, emissionCategoryId)
+    constructor(id, name, owner, barcode, ingredients, serving_size, calcium, calories, 
+        carbohydrates, cholesteroal, fiber, iron, protein, saturated_fat, sodium, sugars, 
+        total_fat, trans_fat, vitamin_a, vitamin_c)
     {
         this.id = id
         this.name = name
         this.owner = owner
         this.barcode = barcode
         this.ingredients = ingredients
-        this.nutrients = nutrients
-        this.emissionCategoryId = emissionCategoryId
+        this.serving_size = serving_size
+        this.calcium = calcium
+        this.calories = calories
+        this.carbohydrates = carbohydrates
+        this.cholesteroal = cholesteroal
+        this.fiber = fiber
+        this.iron = iron
+        this.protein = protein
+        this.saturated_fat = saturated_fat
+        this.sodium = sodium
+        this.sugars = sugars
+        this.total_fat = total_fat
+        this.trans_fat = trans_fat
+        this.vitamin_a = vitamin_a
+        this.vitamin_c = vitamin_c
     }
     
     static returnNutrients(nutrients){
@@ -18,7 +33,8 @@ class Food {
         }
         return nutrientsObj
     }
-
+    
+    
     renderFood() {
         document.getElementById("product-info").innerHTML = 
         `
