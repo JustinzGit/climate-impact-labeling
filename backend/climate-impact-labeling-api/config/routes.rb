@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :food_emission_categories
   resources :emission_categories
   resources :foods
 
