@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_010815) do
+ActiveRecord::Schema.define(version: 2020_08_07_041329) do
 
   create_table "emission_categories", force: :cascade do |t|
     t.string "food_category"
@@ -19,13 +19,6 @@ ActiveRecord::Schema.define(version: 2020_08_07_010815) do
     t.integer "acidifying_emissions"
     t.integer "eutrophying_emissions"
     t.integer "freshwater_withdrawl"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "food_emission_categories", force: :cascade do |t|
-    t.integer "food_id"
-    t.integer "emission_category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -55,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_010815) do
     t.integer "vitamin_c"
     t.integer "calcium"
     t.integer "iron"
+    t.integer "emission_category_id"
   end
 
 end
