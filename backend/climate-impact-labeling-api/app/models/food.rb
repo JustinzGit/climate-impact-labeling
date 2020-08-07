@@ -1,6 +1,5 @@
 class Food < ApplicationRecord
-    has_many :food_emission_categories
-    has_many :emission_categories, through: :food_emission_categories
+    belongs_to :emission_category
     
     self.primary_key = "fdc_id"
 
