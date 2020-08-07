@@ -12,9 +12,6 @@ class EmissionCategory {
 
     
     renderEmissionCategory() {
-        let emissionDiv = document.getElementById("emission-category")
-        emissionDiv.innerHTML = `<b>${this.category}</b>`
-
         let data = [{ 
             data: {
                 "GHG Emissions": this.ghg,
@@ -33,27 +30,30 @@ class EmissionCategory {
         }]
 
         let dataRange = [10, 30]
-        let emissionCategoryDiv = document.getElementById("emission-category")
+        let emissionDiv = document.getElementById("emission-category")
     
         if (this.ghg < dataRange[0]){
-            emissionCategoryDiv.innerHTML =
+            emissionDiv.innerHTML =
             `
                 <h2>Greenhouse Gas Emissions: <b style="color: #1aa260;">Low</b></h2>
                 <p>Choosing more products of this category lowers your carbon footprint!</p>
+                <b>${this.category}</b>
             `
         }
         else if (this.ghg >= dataRange[0] && this.ghg < dataRange[1]){
-            emissionCategoryDiv.innerHTML =
+            emissionDiv.innerHTML =
             `
                 <h2>Greenhouse Gas Emissions: <b style="color: #ffc107;">Moderate</b></h2>
                 <p>Choosing products of this category are smart alternatives to those with high emissions</p>
+                <b>${this.category}</b>
             `
         }
         else if (this.ghg >= dataRange[1]){
-            emissionCategoryDiv.innerHTML =
+            emissionDiv.innerHTML =
             `
                 <h2>Greenhouse Gas Emissions: <b style="color: #de5246";>High</b></h2>
                 <p>Limiting your consumption of these products to once or twice a week<br>can make a huge difference on green house emssions</p>
+                <b>${this.category}</b>
             `
         }
         
