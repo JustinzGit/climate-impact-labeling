@@ -1,6 +1,6 @@
 class Food {
     constructor(id, name, owner, barcode, ingredients, serving_size, calcium, calories, 
-        carbohydrates, cholesteroal, fiber, iron, protein, saturated_fat, sodium, sugars, 
+        carbohydrates, cholesterol, fiber, iron, protein, saturated_fat, sodium, sugars, 
         total_fat, trans_fat, vitamin_a, vitamin_c)
     {
         this.id = id
@@ -12,7 +12,7 @@ class Food {
         this.calcium = calcium
         this.calories = calories
         this.carbohydrates = carbohydrates
-        this.cholesteroal = cholesteroal
+        this.cholesterol = cholesterol
         this.fiber = fiber
         this.iron = iron
         this.protein = protein
@@ -66,8 +66,6 @@ class Food {
                 return fat_amount * 9
             }
         }
-
-        let nutrients = Food.returnNutrients(this.nutrients)
         
         // Insertion of nutrition label
         document.getElementById("nutrition").innerHTML = 
@@ -87,28 +85,28 @@ class Food {
             </thead>
             <tbody>
             <tr>
-                <th colspan="2"><b>Calories</b> ${formatData(nutrients["1008"])}</th>
-                <td>Calories from Fat ${calculateFatCalories(nutrients["1004"])}</td>
+                <th colspan="2"><b>Calories</b> ${formatData(this.calories)}</th>
+                <td>Calories from Fat ${calculateFatCalories(this.total_fat)}</td>
             </tr>
             <tr class="thick-row">
                 <td colspan="3" class="small-info"><b>% Daily Value*</b></td>
             </tr>
             <tr>
-                <th colspan="2"><b>Total Fat</b> ${formatData(nutrients["1004"])}g</th>
+                <th colspan="2"><b>Total Fat</b> ${formatData(this.total_fat)}g</th>
                 <td><b>*%</b></td>
             </tr>
             <tr>
                 <td class="blank-cell"></td>
-                <th>Saturated Fat ${formatData(nutrients["1258"])}g</th>
+                <th>Saturated Fat ${formatData(this.saturated_fat)}g</th>
                 <td><b>*%</b></td>
             </tr>
             <tr>
                 <td class="blank-cell"></td>
-                <th>Trans Fat ${formatData(nutrients["1257"])}g</th>
+                <th>Trans Fat ${formatData(this.trans_fat)}g</th>
                 <td></td>
             </tr>
             <tr>
-                <th colspan="2"><b>Cholesterol</b> ${formatData(nutrients["1253"])}mg</th>
+                <th colspan="2"><b>Cholesterol</b> ${formatData(this.cholesterol)}mg</th>
                 <td><b>*%</b></td>
             </tr>
             <tr>
