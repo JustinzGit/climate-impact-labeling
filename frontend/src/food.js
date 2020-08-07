@@ -27,58 +27,6 @@ class Food {
         this.emission_category = emission_category
     }
 
-    renderNutritionForm(){
-        document.getElementById("nutrition").innerHTML = 
-        `
-        <form>
-            <label>Serving Size</label>
-            <p><input type="text" value="${this.serving_size}"></p>
-
-            <label>Calcium (mg)</label>
-            <p><input type="text" value="${this.calcium}"></p>
-
-            <label>Calories (kCAL)</label>
-            <p><input type="text" value="${this.calories} "></p>
-
-            <label>Carbohydrate (g)</label>
-            <p><input type="text" value="${this.carbohydrates}"></p>
-
-            <label>Cholesterol (mg)</label>
-            <p><input type="text" value="${this.cholesterol}"></p>
-
-            <label>Fiber (g)</label>
-            <p><input type="text" value="${this.fiber}"></p>
-
-            <label>Iron (mg)</label>
-            <p><input type="text" value="${this.iron}"></p>
-
-            <label>Protein (g)</label>
-            <p><input type="text" value="${this.protein}"></p>
-
-            <label>Saturated Fat (g)</label>
-            <p><input type="text" value="${this.saturated_fat}"></p>
-
-            <label>Sodium (mg)</label>
-            <p><input type="text" value="${this.sodium}"></p>
-
-            <label>Sugars (g)</label>
-            <p><input type="text" value="${this.sugars}"></p>
-
-            <label>Total Fat (g)</label>
-            <p><input type="text" value="${this.total_fat}"></p>
-
-            <label>Trans Fat (g)</label>
-            <p><input type="text" value="${this.trans_fat}"></p>
-
-            <label>Vitamin A (IU)</label>
-            <p><input type="text" value="${this.vitamin_a}"></p>
-
-            <label>Vitamin C (mg)</label>
-            <p><input type="text" value="${this.vitamin_c}"></p>
-        </form>
-        `
-    }
-
     renderFood() {
         document.getElementById("product-info").innerHTML = 
         `

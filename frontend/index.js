@@ -40,18 +40,65 @@ function fetchFoodById(id){
         let nutritionDiv = document.getElementById("nutrition")
         let a = document.createElement("a")
         a.setAttribute("href", "")
-        a.innerHTML = "Edit Nutrition"
+        a.innerHTML = "Edit Nutrition Facts"
+        nutritionDiv.append(a)
+
         a.addEventListener("click", () => {
             event.preventDefault()
-            foodObj.renderNutritionForm()
 
-            let input = document.createElement("input")
-            input.setAttribute("type", "button")
-            input.setAttribute("value", "Edit Nutrition Facts")
-            input.setAttribute("class", "btn btn-secondary")
-            nutritionDiv.append(input)
+            let form = document.createElement("form")
+            form.addEventListener("submit", assignNutritionFacts)
+            form.innerHTML = 
+            `
+            <label>Serving Size</label>
+            <p><input type="text" value="${foodObj.serving_size}"></p>
+
+            <label>Calcium (mg)</label>
+            <p><input type="text" value="${foodObj.calcium}"></p>
+
+            <label>Calories (kCAL)</label>
+            <p><input type="text" value="${foodObj.calories} "></p>
+
+            <label>Carbohydrate (g)</label>
+            <p><input type="text" value="${foodObj.carbohydrates}"></p>
+
+            <label>Cholesterol (mg)</label>
+            <p><input type="text" value="${foodObj.cholesterol}"></p>
+
+            <label>Fiber (g)</label>
+            <p><input type="text" value="${foodObj.fiber}"></p>
+
+            <label>Iron (mg)</label>
+            <p><input type="text" value="${foodObj.iron}"></p>
+
+            <label>Protein (g)</label>
+            <p><input type="text" value="${foodObj.protein}"></p>
+
+            <label>Saturated Fat (g)</label>
+            <p><input type="text" value="${foodObj.saturated_fat}"></p>
+
+            <label>Sodium (mg)</label>
+            <p><input type="text" value="${foodObj.sodium}"></p>
+
+            <label>Sugars (g)</label>
+            <p><input type="text" value="${foodObj.sugars}"></p>
+
+            <label>Total Fat (g)</label>
+            <p><input type="text" value="${foodObj.total_fat}"></p>
+
+            <label>Trans Fat (g)</label>
+            <p><input type="text" value="${foodObj.trans_fat}"></p>
+
+            <label>Vitamin A (IU)</label>
+            <p><input type="text" value="${foodObj.vitamin_a}"></p>
+
+            <label>Vitamin C (mg)</label>
+            <p><input type="text" value="${foodObj.vitamin_c}"></p>
+            <input type="submit" class="btn btn-secondary" value="Edit Nutrition Facts">
+            `
+            nutritionDiv.innerHTML = ""
+            nutritionDiv.append(form)
         })
-        nutritionDiv.append(a)
 
     }).catch(error => {
         document.getElementById("alert").innerHTML = error
@@ -176,6 +223,10 @@ function assignEmissionCategory(foodId, emissionCategoryId){
     .then(food => {
         fetchFoodById(food.id)
     })
+}
+
+function assignNutritionFacts(){
+    console.log("HI")
 }
 
 // Fetches list of all emission categories, renders into one chart
