@@ -28,14 +28,14 @@ function fetchFoodById(id){
     .then(food => {
         if(food === null) throw "Product Not Found"
     
-        let foodItem = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
+        let foodObj = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
             food.ingredients, food.serving_size, food.calcium, food.calories, 
             food.carbohydrates, food.cholesterol, food.fiber, food.iron, 
             food.protein, food.saturated_fat, food.sodium, food.sugars, 
             food.total_fat, food.trans_fat, food.vitamin_a, food.vitamin_c)
 
-        foodItem.renderFood()
-        fetchEmissionCategory(foodItem)
+        foodObj.renderFood()
+        fetchEmissionCategory(foodObj)
         
         document.getElementById("product-emissions-chart",).style.display = "none"
     
