@@ -32,7 +32,7 @@ function fetchFoodById(id){
             food.ingredients, food.serving_size, food.calcium, food.calories, 
             food.carbohydrates, food.cholesterol, food.fiber, food.iron, 
             food.protein, food.saturated_fat, food.sodium, food.sugars, 
-            food.total_fat, food.trans_fat, food.vitamin_a, food.vitamin_c)
+            food.total_fat, food.trans_fat, food.vitamin_a, food.vitamin_c, food.emission_category_id)
 
         foodObj.renderFood()
         fetchEmissionCategory(foodObj)

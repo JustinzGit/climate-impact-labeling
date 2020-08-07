@@ -1,7 +1,7 @@
 class Food {
     constructor(id, name, owner, barcode, ingredients, serving_size, calcium, calories, 
         carbohydrates, cholesterol, fiber, iron, protein, saturated_fat, sodium, sugars, 
-        total_fat, trans_fat, vitamin_a, vitamin_c)
+        total_fat, trans_fat, vitamin_a, vitamin_c, emission_category)
     {
         this.id = id
         this.name = name
@@ -23,6 +23,7 @@ class Food {
         this.trans_fat = trans_fat
         this.vitamin_a = vitamin_a
         this.vitamin_c = vitamin_c
+        this.emission_category = emission_category
     }
     
     renderFood() {
