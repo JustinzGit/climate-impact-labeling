@@ -28,11 +28,11 @@ function fetchFoodById(id){
     .then(food => {
         if(food === null) throw "Product Not Found"
         
-        let foodProduct = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
+        let food = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
             food.ingredients, food.food_nutrients, food.emission_category_id)
 
-        foodProduct.renderFood()
-        fetchEmissionCategory(foodProduct)
+        food.renderFood()
+        fetchEmissionCategory(food)
         
         document.getElementById("product-emissions-chart",).style.display = "none"
     
@@ -230,7 +230,7 @@ function fetchEmissionCategories() {
     })
 }
 
-// Creates form whereby a known GTIN or UPC can be entered
+// Creates form where a known GTIN or UPC can be entered
 function createBarcodeForm(){
     let barcodeForm = document.getElementById("barcode-form")
 
