@@ -47,7 +47,9 @@ function fetchFoodById(id){
             event.preventDefault()
 
             let form = document.createElement("form")
-            form.addEventListener("submit", assignNutritionFacts)
+            form.addEventListener("submit", () => {
+                assignNutritionFacts(foodObj.id)
+            })
             form.innerHTML = 
             `
             <label>Serving Size</label>
@@ -225,7 +227,7 @@ function assignEmissionCategory(foodId, emissionCategoryId){
     })
 }
 
-function assignNutritionFacts(){
+function assignNutritionFacts(foodId){
     event.preventDefault()
     let elements = document.forms[2].elements
     let nutritionParams = {}
@@ -234,7 +236,19 @@ function assignNutritionFacts(){
             nutritionParams[element.id] = element.value
         }
     }
-    console.log(nutritionParams)
+
+    fetch(`${BASE_URL}/foods/${foodId}`, {
+        method: "PATCH",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify(nutritionParams)
+    })
+    .then(resp => resp.json())
+    .then(food => {
+        fetchFoodById(food.id)
+    })
 }
 
 // Fetches list of all emission categories, renders into one chart
