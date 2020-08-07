@@ -51,49 +51,49 @@ function fetchFoodById(id){
             form.innerHTML = 
             `
             <label>Serving Size</label>
-            <p><input type="text" value="${foodObj.serving_size}"></p>
+            <p><input type="text" id="serving_size" value="${foodObj.serving_size}"></p>
 
             <label>Calcium (mg)</label>
-            <p><input type="text" value="${foodObj.calcium}"></p>
+            <p><input type="text" id="calcium" value="${foodObj.calcium}"></p>
 
             <label>Calories (kCAL)</label>
-            <p><input type="text" value="${foodObj.calories} "></p>
+            <p><input type="text" id="calories" value="${foodObj.calories} "></p>
 
             <label>Carbohydrate (g)</label>
-            <p><input type="text" value="${foodObj.carbohydrates}"></p>
+            <p><input type="text" id="carbohydrates" value="${foodObj.carbohydrates}"></p>
 
             <label>Cholesterol (mg)</label>
-            <p><input type="text" value="${foodObj.cholesterol}"></p>
+            <p><input type="text" id="cholesterol" value="${foodObj.cholesterol}"></p>
 
             <label>Fiber (g)</label>
-            <p><input type="text" value="${foodObj.fiber}"></p>
+            <p><input type="text" id="fiber" value="${foodObj.fiber}"></p>
 
             <label>Iron (mg)</label>
-            <p><input type="text" value="${foodObj.iron}"></p>
+            <p><input type="text" id="iron" value="${foodObj.iron}"></p>
 
             <label>Protein (g)</label>
-            <p><input type="text" value="${foodObj.protein}"></p>
+            <p><input type="text" id="protein" value="${foodObj.protein}"></p>
 
             <label>Saturated Fat (g)</label>
-            <p><input type="text" value="${foodObj.saturated_fat}"></p>
+            <p><input type="text" id="saturated_fat" value="${foodObj.saturated_fat}"></p>
 
             <label>Sodium (mg)</label>
-            <p><input type="text" value="${foodObj.sodium}"></p>
+            <p><input type="text" id="sodium" value="${foodObj.sodium}"></p>
 
             <label>Sugars (g)</label>
-            <p><input type="text" value="${foodObj.sugars}"></p>
+            <p><input type="text" id="sugars" value="${foodObj.sugars}"></p>
 
             <label>Total Fat (g)</label>
-            <p><input type="text" value="${foodObj.total_fat}"></p>
+            <p><input type="text" id="total_fat" value="${foodObj.total_fat}"></p>
 
             <label>Trans Fat (g)</label>
-            <p><input type="text" value="${foodObj.trans_fat}"></p>
+            <p><input type="text" id="trans_fat" value="${foodObj.trans_fat}"></p>
 
             <label>Vitamin A (IU)</label>
-            <p><input type="text" value="${foodObj.vitamin_a}"></p>
+            <p><input type="text" id="vitamin_a" value="${foodObj.vitamin_a}"></p>
 
             <label>Vitamin C (mg)</label>
-            <p><input type="text" value="${foodObj.vitamin_c}"></p>
+            <p><input type="text" id="vitamin_c" value="${foodObj.vitamin_c}"></p>
             <input type="submit" class="btn btn-secondary" value="Edit Nutrition Facts">
             `
             nutritionDiv.innerHTML = ""
@@ -226,7 +226,12 @@ function assignEmissionCategory(foodId, emissionCategoryId){
 }
 
 function assignNutritionFacts(){
-    console.log("HI")
+    event.preventDefault()
+    let elements = document.forms[2].elements
+    let nutritionParams = {}
+    for(const element of elements){
+        console.log(element.id)
+    }
 }
 
 // Fetches list of all emission categories, renders into one chart
