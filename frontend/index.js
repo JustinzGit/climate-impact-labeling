@@ -46,8 +46,8 @@ function fetchFoodById(id){
 
 // Fetches emission category of food, renders to DOM in chart
 function fetchEmissionCategory(foodObj){
-    if (foodObj.emissionCategoryId){
-        fetch(`${BASE_URL}/emission_categories/${foodObj.emissionCategoryId}`)
+    if (foodObj.emission_category){
+        fetch(`${BASE_URL}/emission_categories/${foodObj.emission_category}`)
         .then(resp => resp.json())
         .then(emissionCategory => {
             let category = new EmissionCategory(emissionCategory.food_category, emissionCategory.land_use, 
