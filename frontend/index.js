@@ -36,8 +36,6 @@ function fetchFoodById(id){
 
         foodObj.renderFood()
         fetchEmissionCategory(foodObj)
-        
-        document.getElementById("product-emissions-chart",).style.display = "none"
     
     }).catch(error => {
         document.getElementById("alert").innerHTML = error
@@ -57,6 +55,7 @@ function fetchEmissionCategory(foodObj){
         })
     }
     else {
+        document.getElementById("product-emissions-chart",).style.display = "none"
         let emissionDiv = document.getElementById("emission-category")
 
         emissionDiv.innerHTML =
@@ -106,6 +105,7 @@ function fetchEmissionCategory(foodObj){
                 assignEmissionCategory(foodObj.id, emissionCategoryId)
             })
             form.append(p, submitBtn)
+            form.style.marginBottom = "50px"
             emissionDiv.append(form)
         })
     }
@@ -121,7 +121,7 @@ function searchFoodByName(name){
         }
         else {
             let resultsDiv = document.getElementById("search-results")
-            resultsDiv.innerHTML += `<b><u>Search Results</b></u>`
+            resultsDiv.innerHTML = `<b><u>Search Results</b></u>`
         
             for (const food of foods){
                 let p = document.createElement("p")
@@ -137,7 +137,7 @@ function searchFoodByName(name){
                 a.addEventListener("click", () => {
                     event.preventDefault()
                     fetchFoodById(event.target.id)
-                    resultsDiv = ""
+                    resultsDiv.innerHTML = ""
                 })  
             }
         }
