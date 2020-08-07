@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_05_194101) do
+ActiveRecord::Schema.define(version: 2020_08_07_010815) do
 
   create_table "emission_categories", force: :cascade do |t|
     t.string "food_category"
@@ -21,7 +21,13 @@ ActiveRecord::Schema.define(version: 2020_08_05_194101) do
     t.integer "freshwater_withdrawl"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "food_emission_categories", force: :cascade do |t|
     t.integer "food_id"
+    t.integer "emission_category_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "foods", force: :cascade do |t|
@@ -32,17 +38,9 @@ ActiveRecord::Schema.define(version: 2020_08_05_194101) do
     t.integer "serving_size"
     t.string "serving_size_unit"
     t.string "household_serving_fulltext"
-    t.string "food_category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.integer "emission_category_id"
-  end
-
-  create_table "nutrients", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "food_id"
     t.integer "calories"
     t.integer "total_fat"
     t.integer "saturated_fat"
