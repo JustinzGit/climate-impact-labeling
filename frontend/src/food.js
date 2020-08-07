@@ -1,5 +1,5 @@
 class Food {
-    constructor(id, name, owner, barcode, ingredients, serving_size, calcium, calories, 
+    constructor(id, name, owner, barcode, ingredients, serving_size, serving_size_unit, calcium, calories, 
         carbohydrates, cholesterol, fiber, iron, protein, saturated_fat, sodium, sugars, 
         total_fat, trans_fat, vitamin_a, vitamin_c, emission_category)
     {
@@ -9,6 +9,7 @@ class Food {
         this.barcode = barcode
         this.ingredients = ingredients
         this.serving_size = serving_size
+        this.serving_size_unit = serving_size_unit
         this.calcium = calcium
         this.calories = calories
         this.carbohydrates = carbohydrates
@@ -40,7 +41,7 @@ class Food {
 
         // Formats data properly for nutrition label
         function formatData(nutrient){
-            if (nutrient === undefined){
+            if (nutrient === undefined || nutrient === null){
                 return `<b style="color: red;">(N/A)</b>`
             }
             else {
@@ -64,9 +65,7 @@ class Food {
         <section class="performance-facts">
         <header class="performance-facts__header">
             <h1 class="performance-facts__title">Nutrition Facts</h1>
-            <p>Serving Size: ${formatData(this.serving_size)} 
-            <br>Unit: ${formatData(this.serving_size_unit)} (about ***g)
-            <p>Serving Per Container ***</p>
+            <p>Serving Size: ${formatData(this.serving_size)} ${formatData(this.serving_size_unit)}
         </header>
         <table class="performance-facts__table">
             <thead>
