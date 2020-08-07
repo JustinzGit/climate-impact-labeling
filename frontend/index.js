@@ -230,8 +230,11 @@ function assignNutritionFacts(){
     let elements = document.forms[2].elements
     let nutritionParams = {}
     for(const element of elements){
-        console.log(element.id)
+        if (element.id){
+            nutritionParams[element.id] = element.value
+        }
     }
+    console.log(nutritionParams)
 }
 
 // Fetches list of all emission categories, renders into one chart
