@@ -25,16 +25,6 @@ class Food {
         this.vitamin_c = vitamin_c
     }
     
-    static returnNutrients(nutrients){
-        // Create object that contains nutrients of food instance
-        let nutrientsObj = {}
-        for (const nutrient of nutrients){
-            nutrientsObj[nutrient["nutrient_id"]] = nutrient.amount 
-        }
-        return nutrientsObj
-    }
-    
-    
     renderFood() {
         document.getElementById("product-info").innerHTML = 
         `
