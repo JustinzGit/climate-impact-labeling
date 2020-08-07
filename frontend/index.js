@@ -27,12 +27,12 @@ function fetchFoodById(id){
     })
     .then(food => {
         if(food === null) throw "Product Not Found"
-        
-        let food = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
+        console.log(food)
+        let foodItem = new Food(food.id, food.name, food.brand_owner, food.gtin_upc, 
             food.ingredients, food.food_nutrients, food.emission_category_id)
 
-        food.renderFood()
-        fetchEmissionCategory(food)
+        foodItem.renderFood()
+        fetchEmissionCategory(foodItem)
         
         document.getElementById("product-emissions-chart",).style.display = "none"
     
