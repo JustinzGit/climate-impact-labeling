@@ -110,25 +110,25 @@ class Food {
                 <td><b>*%</b></td>
             </tr>
             <tr>
-                <th colspan="2"><b>Sodium</b> ${formatData(nutrients["1093"])}mg</th>
+                <th colspan="2"><b>Sodium</b> ${formatData(this.sodium)}mg</th>
                 <td><b>*%</b></td>
             </tr>
             <tr>
-                <th colspan="2"><b>Total Carbohydrate</b> ${formatData(nutrients["1050"])}g</th>
-                <td><b>*%</b></td>
-            </tr>
-            <tr>
-                <td class="blank-cell"></td>
-                <th>Dietary Fiber ${formatData(nutrients["2033"])}g</th>
+                <th colspan="2"><b>Total Carbohydrate</b> ${formatData(this.carbohydrates)}g</th>
                 <td><b>*%</b></td>
             </tr>
             <tr>
                 <td class="blank-cell"></td>
-                <th>Sugars ${formatData(nutrients["2000"])}g</th>
+                <th>Dietary Fiber ${formatData(this.fiber)}g</th>
+                <td><b>*%</b></td>
+            </tr>
+            <tr>
+                <td class="blank-cell"></td>
+                <th>Sugars ${formatData(this.sugars)}g</th>
                 <td></td>
             </tr>
             <tr class="thick-end">
-                <th colspan="2"><b>Protein</b> ${formatData(nutrients["1003"])}g</th>
+                <th colspan="2"><b>Protein</b> ${formatData(this.protein)}g</th>
                 <td></td>
             </tr>
             </tbody>
@@ -137,12 +137,12 @@ class Food {
         <table class="performance-facts__table--grid">
             <tbody>
             <tr>
-                <td colspan="2">Vitamin A ${formatData(nutrients["1104"])} IU *%</td>
-                <td>Vitamin C ${formatData(nutrients["1162"])}mg *%</td>
+                <td colspan="2">Vitamin A ${formatData(this.vitamin_a)} IU *%</td>
+                <td>Vitamin C ${formatData(this.vitamin_c)}mg *%</td>
             </tr>
             <tr class="thin-end">
-                <td colspan="2">Calcium ${formatData(nutrients["1087"])}mg *%</td>
-                <td>Iron ${formatData(nutrients["1089"])}mg *%</td>
+                <td colspan="2">Calcium ${formatData(this.calcium)}mg *%</td>
+                <td>Iron ${formatData(this.iron)}mg *%</td>
             </tr>
             </tbody>
         </table>
