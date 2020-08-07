@@ -36,7 +36,23 @@ function fetchFoodById(id){
 
         foodObj.renderFood()
         fetchEmissionCategory(foodObj)
-    
+        
+        let nutritionDiv = document.getElementById("nutrition")
+        let a = document.createElement("a")
+        a.setAttribute("href", "")
+        a.innerHTML = "Edit Nutrition"
+        a.addEventListener("click", () => {
+            event.preventDefault()
+            foodObj.renderNutritionForm()
+
+            let input = document.createElement("input")
+            input.setAttribute("type", "button")
+            input.setAttribute("value", "Edit Nutrition Facts")
+            input.setAttribute("class", "btn btn-secondary")
+            nutritionDiv.append(input)
+        })
+        nutritionDiv.append(a)
+
     }).catch(error => {
         document.getElementById("alert").innerHTML = error
     })
