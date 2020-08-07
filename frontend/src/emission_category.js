@@ -11,7 +11,7 @@ class EmissionCategory {
         }
 
     
-    renderEmissionCategoryChart() {
+    renderEmissionCategory() {
         let emissionDiv = document.getElementById("emission-category")
         emissionDiv.innerHTML = `<b>${this.category}</b>`
 
