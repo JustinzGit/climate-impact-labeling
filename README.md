@@ -3,7 +3,7 @@ Climate Impact Labeling is a web application built to inform consumers about foo
 
 Product information and nutritional data were obtained via the U.S. Department of Agriculture (USDA), Agriculutrual Research Service. [Food Data Central](https://fdc.nal.usda.gov/)
 
-Data pertaining to a food products agricultural impact and GHG emissions were obtained from the work published by J.Poore and T.Nemecek in journal of Science. [Reducing food’s environmental impacts through producers and consumers](https://science.sciencemag.org/content/360/6392/987)
+Data pertaining to a food products agricultural impact and GHG emissions were obtained from the work published by J.Poore and T.Nemecek in the journal of Science. [Reducing food’s environmental impacts through producers and consumers](https://science.sciencemag.org/content/360/6392/987)
 
 # Installation
 - Clone this repository
