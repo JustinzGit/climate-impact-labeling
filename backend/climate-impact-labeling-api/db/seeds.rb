@@ -2,10 +2,10 @@ require 'csv'
 require 'active_support/inflector'
 
 # Seeds rails database from provided files
-Dir.each_child("./usda_files") do |file|
+Dir.each_child("./project_files") do |file|
 
     # Read and parse data from file
-    data = CSV.parse(File.read("./usda_files/#{file}"))
+    data = CSV.parse(File.read("./project_files/#{file}"))
 
     # Store columns into an array 
     columns = data.shift
