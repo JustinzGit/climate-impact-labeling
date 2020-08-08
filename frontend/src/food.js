@@ -1,6 +1,6 @@
 class Food {
     constructor(id, name, owner, barcode, ingredients, serving_size, serving_size_unit, calcium, calories, 
-        carbohydrates, cholesterol, fiber, iron, protein, saturated_fat, sodium, sugars, 
+        carbohydrate, cholesterol, fiber, iron, protein, saturated_fat, sodium, sugars, 
         total_fat, trans_fat, vitamin_a, vitamin_c, emission_category)
     {
         this.id = id
@@ -12,7 +12,7 @@ class Food {
         this.serving_size_unit = serving_size_unit
         this.calcium = calcium
         this.calories = calories
-        this.carbohydrates = carbohydrates
+        this.carbohydrate = carbohydrate
         this.cholesterol = cholesterol
         this.fiber = fiber
         this.iron = iron
@@ -104,7 +104,7 @@ class Food {
                 <td><b>*%</b></td>
             </tr>
             <tr>
-                <th colspan="2"><b>Total Carbohydrate</b> ${formatData(this.carbohydrates)}g</th>
+                <th colspan="2"><b>Total Carbohydrate</b> ${formatData(this.carbohydrate)}g</th>
                 <td><b>*%</b></td>
             </tr>
             <tr>
