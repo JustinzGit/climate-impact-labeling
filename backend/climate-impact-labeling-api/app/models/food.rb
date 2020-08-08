@@ -1,5 +1,5 @@
 class Food < ApplicationRecord
-    belongs_to :emission_category
+    belongs_to :emission_category, optional: true
     
     self.primary_key = "fdc_id"
 
