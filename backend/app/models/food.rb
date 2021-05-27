@@ -5,6 +5,6 @@ class Food < ApplicationRecord
 
     # Search by product name
     def self.search(name)
-        where("name LIKE (?)", "%#{name}%")
+        where("name ILIKE (?)", "%#{name}%")
     end
 end
