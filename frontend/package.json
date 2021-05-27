@@ -13,7 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "chart.js": "^2.9.3",
-    "chartkick": "^3.2.1"
+    "chartkick": "^3.2.1",
+    "server": "npm:undefined@*"
   },
   "devDependencies": {
     "webpack": "^4.44.0",
