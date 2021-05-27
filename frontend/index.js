@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchEmissionCategories()
 })
 
-const BASE_URL = "http://127.0.0.1:3000"
+const BASE_URL = "https://climate-labeling-backend.herokuapp.com/"
 
 // Fetches food, renders to DOM
 function fetchFoodById(id){
