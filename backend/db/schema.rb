@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_041329) do
+ActiveRecord::Schema.define(version: 2021_05_27_154511) do
 
   create_table "emission_categories", force: :cascade do |t|
     t.string "food_category"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_041329) do
   end
 
   create_table "foods", force: :cascade do |t|
-    t.integer "fdc_id"
+    t.bigint "fdc_id"
     t.string "brand_owner"
     t.integer "gtin_upc"
     t.string "ingredients"
