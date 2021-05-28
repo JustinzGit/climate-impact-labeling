@@ -1,8 +1,8 @@
 module.exports = {
         mode: 'development',
-        entry: './index.js',
+        entry: './public/js/index.js',
         output: {
           filename: 'main.js',
-          publicPath: 'dist'
+          publicPath: './public/js'
         }
       }
